@@ -69,7 +69,7 @@ export const projects = [
     description:
       'Designed and developed a personal portfolio website using Next.js and TailwindCSS. Features dark mode, interactive animations with Framer Motion, and an optimized layout for showcasing projects and skills.',
     image: '/portfolio.png',
-    github: 'https://github.com/yourusername/portfolio-website',
+    github: 'https://github.com/khannakhushi/portfolio',
   },
   {
     name: 'The Drill Game',
