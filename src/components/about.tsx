@@ -25,7 +25,7 @@ export default function About() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center md:flex-row">
           <div className="">
-            <Card>
+            <Card className="border-primary">
               <CardContent className="flex flex-col gap-6 p-6 md:flex-row">
                 <Image
                   src="/me2.jpeg"

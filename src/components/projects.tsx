@@ -21,24 +21,26 @@ export default function Projects() {
             } ${index % 2 === 0 ? 'animate-fade-in-right' : 'animate-fade-in-left'}`}
           >
             {/* Project details card */}
-            <div className="w-full transform rounded-lg bg-background p-6 shadow-lg transition-all duration-500 hover:scale-105 md:w-1/2">
-              <div className="transition-opacity duration-500">
-                <h3 className="font-playfair mb-2 text-2xl font-semibold">{project.name}</h3>
+            <div className="w-full md:w-1/2 p-1"> {/* Added padding */}
+              <div className="w-full transform rounded-lg bg-background p-6 shadow-lg transition-all duration-500 hover:scale-105 border-2 border-primary/10"> {/* Added border */}
+                <div className="transition-opacity duration-500">
+                  <h3 className="font-playfair mb-2 text-2xl font-semibold">{project.name}</h3>
 
-                {project.subsection && (
-                  <h4 className="font-playfair mb-2 text-lg font-medium text-gray-600 dark:text-gray-500">
-                    {project.subsection}
-                  </h4>
-                )}
-              </div>
+                  {project.subsection && (
+                    <h4 className="font-playfair mb-2 text-lg font-medium text-gray-600 dark:text-gray-500">
+                      {project.subsection}
+                    </h4>
+                  )}
+                </div>
 
-              <p className="text-sm mb-4">{project.description}</p>
-              <div className="flex w-full justify-end">
-                <Button variant="ghost" asChild size="icon">
-                  <Link href={project.github} target="_blank" rel="noopener noreferrer">
-                    <Link2 className="h-6 w-6" />
-                  </Link>
-                </Button>
+                <p className="text-sm mb-4">{project.description}</p>
+                <div className="flex w-full justify-end">
+                  <Button variant="ghost" asChild size="icon">
+                    <Link href={project.github} target="_blank" rel="noopener noreferrer">
+                      <Link2 className="h-6 w-6" />
+                    </Link>
+                  </Button>
+                </div>
               </div>
             </div>
 
@@ -49,15 +51,17 @@ export default function Projects() {
 
             {/* Project image */}
             {project.image && (
-              <div className="w-full md:w-1/2">
+              <div className="w-full md:w-1/2 p-1"> {/* Added padding */}
                 <Link href={project.github} target="_blank" rel="noopener noreferrer" className="block h-64 w-full">
-                  <Image
-                    src={project.image}
-                    alt={project.name}
-                    width={400}
-                    height={300}
-                    className="h-full w-full rounded-lg object-cover shadow-lg"
-                  />
+                  <div className="h-full w-full rounded-lg p-1 border-2 border-primary"> {/* Added border and padding */}
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      width={400}
+                      height={300}
+                      className="h-full w-full rounded-lg object-cover shadow-lg"
+                    />
+                  </div>
                 </Link>
               </div>
             )}
