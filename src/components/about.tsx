@@ -70,7 +70,7 @@ export default function About() {
                   </div>
                   <Button asChild size="lg">
                     <Link
-                      href="/Khyaati_Khanna_Resume.pdf"
+                      href="/Khanna_Resume.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
