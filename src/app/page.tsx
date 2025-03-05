@@ -17,6 +17,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
+import MediumIcon from '@/components/medium-icon';
 
 type FadeInSectionProps = {
   children: ReactNode;
@@ -266,6 +267,17 @@ export default function Page() {
                       <Button className="h-10 w-10 text-lg" variant="ghost" size="icon">
                         <Linkedin className="h-8 w-8" />
                         <span className="sr-only">LinkedIn</span>
+                      </Button>
+                    </a>
+
+                    <a
+                      href="https://medium.com/@khannakhushi93"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button className="h-10 w-10 text-lg" variant="ghost" size="icon">
+                        <MediumIcon className="h-8 w-8" />
+                        <span className="sr-only">Medium</span>
                       </Button>
                     </a>
 
