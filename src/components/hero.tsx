@@ -60,7 +60,7 @@ function Hero() {
   }, [isHovering]);
 
   return (
-    <section className="flex min-h-[85vh] flex-col items-center justify-center py-16 md:py-20">
+    <section className="flex min-h-[85vh] flex-col items-center justify-center overflow-hidden py-16 md:py-20">
       <motion.div
         className="grid w-full max-w-6xl grid-cols-1 items-center gap-8 px-4 md:grid-cols-2 md:gap-16"
         initial={{ opacity: 0 }}
@@ -141,7 +141,7 @@ function Hero() {
         {/* Image */}
         <div className="relative order-1 flex justify-center md:order-2 md:justify-end">
           {/* Outer decorative border */}
-          <div className="relative rounded-2xl p-2">
+          <div className="relative max-w-full rounded-2xl p-2">
             <div className="absolute inset-0 rounded-2xl border-[2px] border-black/70 dark:border-white/70"></div>
             <motion.div
               ref={imageRef}
@@ -156,7 +156,7 @@ function Hero() {
                   imageRef.current.style.transform = '';
                 }
               }}
-              className="relative overflow-hidden rounded-2xl border-4 border-primary/20 shadow-2xl"
+              className="relative max-w-full overflow-hidden rounded-2xl border-4 border-primary/20 shadow-2xl"
               style={{
                 transformStyle: 'preserve-3d',
                 transition: 'transform 0.1s ease-out',
@@ -166,7 +166,7 @@ function Hero() {
               <AnimatePresence>
                 {showEasterEgg && (
                   <motion.div
-                    className="absolute inset-0 z-30 flex items-center justify-center"
+                    className="absolute inset-0 z-30 flex items-center justify-center overflow-hidden"
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0 }}

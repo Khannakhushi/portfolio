@@ -39,8 +39,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={m.className}>
+    <html lang="en" className="overflow-x-hidden">
+      <body className={`${m.className} overflow-x-hidden`}>
         {children}
         <Analytics />
       </body>

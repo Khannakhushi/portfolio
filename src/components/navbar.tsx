@@ -38,7 +38,7 @@ export default function Navbar({
   return (
     <>
       <header className="fixed top-0 z-50 w-full bg-card/80 shadow-sm backdrop-blur-sm">
-        <div className="container mx-auto flex items-center justify-between px-4 py-4">
+        <div className="container mx-auto flex items-center justify-between overflow-hidden px-4 py-4">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -118,7 +118,7 @@ export default function Navbar({
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-card/95 pt-16 backdrop-blur-md md:hidden"
+            className="fixed inset-0 z-40 overflow-hidden bg-card/95 pt-16 backdrop-blur-md md:hidden"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}

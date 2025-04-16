@@ -161,8 +161,8 @@ export default function Page() {
   };
 
   return (
-    <div className={`min-h-screen ${darkMode ? 'dark' : ''}`}>
-      <div className="min-h-screen bg-gradient-to-br from-[hsl(var(--bg-gradient-from))] via-[hsl(var(--bg-gradient-via))] to-[hsl(var(--bg-gradient-to))] text-[hsl(var(--text-color))] transition-all duration-500">
+    <div className={`min-h-screen ${darkMode ? 'dark' : ''} overflow-hidden`}>
+      <div className="min-h-screen overflow-x-hidden bg-gradient-to-br from-[hsl(var(--bg-gradient-from))] via-[hsl(var(--bg-gradient-via))] to-[hsl(var(--bg-gradient-to))] text-[hsl(var(--text-color))] transition-all duration-500">
         <Navbar
           darkMode={darkMode}
           setDarkMode={setDarkMode}
@@ -171,7 +171,7 @@ export default function Page() {
           scrollToTop={scrollToTop}
         />
 
-        <main className="container mx-auto space-y-24 px-4 pb-16 pt-24">
+        <main className="container mx-auto space-y-24 overflow-x-hidden px-4 pb-16 pt-24">
           {memoizedHero}
           {memoizedAbout}
           {memoizedExperience}
