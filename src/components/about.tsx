@@ -145,27 +145,24 @@ export default function About() {
             </motion.div>
 
             <div className="flex w-full flex-col justify-center md:w-1/2">
-              <motion.h3
-                className="mb-4 text-3xl font-bold"
+              <motion.h1
+                className="mb-4 text-3xl font-bold md:text-4xl"
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
               >
-                Hello, I&apos;m Khyaati
-              </motion.h3>
-
+                Hello, I'm Khyaati
+              </motion.h1>
               <motion.p
-                className="mb-6 text-base opacity-80"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                viewport={{ once: true }}
+                className="mb-6 max-w-2xl text-lg md:text-xl"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
               >
-                I&apos;m a passionate software engineer and a junior at the University of Houston,
-                pursuing a major in Computer Science with minors in Business Administration and
-                Mathematics. Set to graduate in December 2025, I&apos;m on a journey to become a
-                versatile full-stack developer.
+                I'm a passionate software engineer and a junior at the University of Houston,
+                majoring in Computer Science with a minor in Mathematics. Set to graduate in
+                December 2025, I'm on a journey to become a versatile software engineer with a focus
+                on full-stack development.
               </motion.p>
 
               <Link

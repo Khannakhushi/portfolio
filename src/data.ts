@@ -16,7 +16,7 @@ export const experiences = [
     company: 'USAA',
     period: 'May 2024 - Aug 2024',
     description:
-      'Led the migration of an application to Spring Boot, enhancing its performance and scalability. Improved a web application&apos;s UI with AngularJS and streamlined deployment using CI/CD GitLab Pipelines. Conducted unit tests, integration testing, and Q tests to ensure seamless functionality across modules.',
+      "Led the migration of an application to Spring Boot, enhancing its performance and scalability. Improved a web application's UI with AngularJS and streamlined deployment using CI/CD GitLab Pipelines. Conducted unit tests, integration testing, and Q tests to ensure seamless functionality across modules.",
   },
   {
     title: 'Teaching Assistant',
@@ -36,6 +36,13 @@ export const experiences = [
 
 export const leadership = [
   {
+    title: 'Marketing Committee',
+    project: 'Cougar AI',
+    period: 'Jan 2025 - Present',
+    description: `Contributing to the growth and visibility of the Cougar AI organization through strategic marketing initiatives. Developing promotional materials, managing social media content, and coordinating outreach events to expand the org\'s presence on campus.`,
+    image: '/cai.png',
+  },
+  {
     title: 'SWE Mentor',
     project: 'Society of Women Engineers',
     period: 'Aug 2024 - Present',
@@ -47,8 +54,7 @@ export const leadership = [
     title: 'Vice President External',
     project: 'Code[Coogs]',
     period: 'May 2024 - Aug 2024',
-    description:
-      `Secured 2 corporate sponsorships and established partnerships with 4+ organizations. Directed external affairs, including organizing events and leading marketing efforts. Oversaw a historian's responsibilities and managed activities and marketing committees.`,
+    description: `Secured 2 corporate sponsorships and established partnerships with 4+ organizations. Directed external affairs, including organizing events and leading marketing efforts. Oversaw a historian\'s responsibilities and managed activities and marketing committees.`,
     image: '/cc.png',
   },
   {
@@ -58,14 +64,6 @@ export const leadership = [
     description:
       'Guided students on navigating class schedules, selecting courses, and managing workloads effectively. Provided resume reviews, career guidance, and resources for technical interview preparation, covering data structures, algorithms, and problem-solving strategies.',
     image: '/nsm.jpg',
-  },
-  {
-    title: 'Marketing Committee',
-    project: 'Cougar AI',
-    period: 'Sep 2024 - Present',
-    description:
-      `Contributing to the growth and visibility of the Cougar AI organization through strategic marketing initiatives. Developing promotional materials, managing social media content, and coordinating outreach events to expand the org's presence on campus.`,
-    image: '/cai.png',
   },
 ];
 
