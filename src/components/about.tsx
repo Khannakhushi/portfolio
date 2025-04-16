@@ -151,7 +151,7 @@ export default function About() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                Hello, I'm Khyaati
+                Hello, I&apos;m Khyaati
               </motion.h1>
               <motion.p
                 className="mb-6 max-w-2xl text-lg md:text-xl"
@@ -159,10 +159,10 @@ export default function About() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
               >
-                I'm a passionate software engineer and a junior at the University of Houston,
+                I&apos;m a passionate software engineer and a junior at the University of Houston,
                 majoring in Computer Science with a minor in Mathematics. Set to graduate in
-                December 2025, I'm on a journey to become a versatile software engineer with a focus
-                on full-stack development.
+                December 2025, I&apos;m on a journey to become a versatile software engineer with a
+                focus on full-stack development.
               </motion.p>
 
               <Link
