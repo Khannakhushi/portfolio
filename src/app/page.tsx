@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect, ReactNode } from 'react';
-import { motion, useScroll } from 'framer-motion';
-import { Moon, Sun, Github, Linkedin, Mail, ArrowUp, Heart } from 'lucide-react';
+import { motion, useScroll, AnimatePresence } from 'framer-motion';
+import { ArrowUp, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Hero from '@/components/hero';
 import About from '@/components/about';
@@ -11,23 +11,22 @@ import Leadership from '@/components/leadership';
 import Projects from '@/components/projects';
 import Image from 'next/image';
 import { useMemo } from 'react';
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from '@/components/ui/sheet';
-import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import MediumIcon from '@/components/medium-icon';
+import Link from 'next/link';
+import Contact from '@/components/contact';
+import Footer from '@/components/footer';
+import Navbar from '@/components/navbar';
 
 type FadeInSectionProps = {
   children: ReactNode;
+  delay?: number;
 };
 
 export default function Page() {
   const [darkMode, setDarkMode] = useState(true);
   const { scrollY } = useScroll();
   const [showScrollButton, setShowScrollButton] = useState(false);
-  const [enableBitmoji, setEnableBitmoji] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,28 +35,24 @@ export default function Page() {
       } else {
         setShowScrollButton(false);
       }
+
+      // Update active section based on scroll position
+      const sections = ['about', 'experience', 'projects', 'leadership', 'contact'];
+      const currentSection = sections.find((section) => {
+        const element = document.getElementById(section);
+        if (!element) return false;
+
+        const rect = element.getBoundingClientRect();
+        return rect.top <= 150 && rect.bottom >= 150;
+      });
+
+      if (currentSection) {
+        setActiveSection(currentSection);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Save scroll position on unload
-  useEffect(() => {
-    const saveScrollPosition = () => {
-      localStorage.setItem('scrollPosition', window.scrollY.toString());
-    };
-    window.addEventListener('beforeunload', saveScrollPosition);
-
-    return () => window.removeEventListener('beforeunload', saveScrollPosition);
-  }, []);
-
-  // Restore scroll position on load
-  useEffect(() => {
-    const savedScrollPosition = localStorage.getItem('scrollPosition');
-    if (savedScrollPosition) {
-      window.scrollTo(0, parseInt(savedScrollPosition, 10));
-    }
   }, []);
 
   useEffect(() => {
@@ -69,18 +64,22 @@ export default function Page() {
   }, [darkMode]);
 
   const fadeInVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: 30 },
+    visible: (delay = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay },
+    }),
   };
 
-  const FadeInSection = ({ children }: FadeInSectionProps) => {
+  const FadeInSection = ({ children, delay = 0 }: FadeInSectionProps) => {
     return (
       <motion.div
         initial="hidden"
         variants={fadeInVariants}
         whileInView="visible"
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
+        custom={delay}
+        viewport={{ once: true, margin: '-100px' }}
       >
         {children}
       </motion.div>
@@ -98,7 +97,7 @@ export default function Page() {
 
   const memoizedAbout = useMemo(
     () => (
-      <FadeInSection>
+      <FadeInSection delay={0.2}>
         <About />
       </FadeInSection>
     ),
@@ -107,7 +106,7 @@ export default function Page() {
 
   const memoizedExperience = useMemo(
     () => (
-      <FadeInSection>
+      <FadeInSection delay={0.3}>
         <Experience />
       </FadeInSection>
     ),
@@ -116,7 +115,7 @@ export default function Page() {
 
   const memoizedProjects = useMemo(
     () => (
-      <FadeInSection>
+      <FadeInSection delay={0.4}>
         <Projects />
       </FadeInSection>
     ),
@@ -125,24 +124,18 @@ export default function Page() {
 
   const memoizedLeadership = useMemo(
     () => (
-      <FadeInSection>
+      <FadeInSection delay={0.5}>
         <Leadership />
       </FadeInSection>
     ),
     [],
   );
 
-  const memoizedBitmoji = useMemo(
+  const memoizedContact = useMemo(
     () => (
-      <motion.div
-        initial={{ opacity: 0, scale: 0 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-        className=""
-      >
-        <Image src="/wall burst.png" alt="Hero Image" width={400} height={400} />
-      </motion.div>
+      <FadeInSection delay={0.6}>
+        <Contact />
+      </FadeInSection>
     ),
     [],
   );
@@ -170,149 +163,45 @@ export default function Page() {
   return (
     <div className={`min-h-screen ${darkMode ? 'dark' : ''}`}>
       <div className="min-h-screen bg-gradient-to-br from-[hsl(var(--bg-gradient-from))] via-[hsl(var(--bg-gradient-via))] to-[hsl(var(--bg-gradient-to))] text-[hsl(var(--text-color))] transition-all duration-500">
-        <header className="fixed top-0 z-50 w-full bg-card shadow-md">
-          <div className="container mx-auto flex items-center justify-between px-4 py-4">
-            <div>
-              <h1
-                className="font-calligraphy text-2xl font-bold"
-                onClick={() => setEnableBitmoji(true)}
-              >
-                Khyaati
-              </h1>
-            </div>
-            <nav>
-              <Sheet>
-                <ul className="hidden space-x-4 md:flex">
-                  {['about', 'experience', 'projects', 'leadership', 'contact'].map((section) => (
-                    <li key={section}>
-                      <Button variant="ghost" onClick={() => scrollToSection(section)}>
-                        {section.charAt(0).toUpperCase() + section.slice(1)}
-                      </Button>
-                    </li>
-                  ))}
-                  <li>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => setDarkMode(!darkMode)}
-                      aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-                    >
-                      {darkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
-                    </Button>
-                  </li>
-                </ul>
-                <SheetTrigger className="md:hidden">
-                  <HamburgerMenuIcon className="h-6 w-6" />
-                </SheetTrigger>
-                <SheetContent>
-                  <ul className="flex flex-col space-y-4 md:hidden">
-                    {['about', 'experience', 'projects', 'leadership', 'contact'].map((section) => (
-                      <li key={section}>
-                        <Button variant="ghost" onClick={() => scrollToSection(section)}>
-                          {section.charAt(0).toUpperCase() + section.slice(1)}
-                        </Button>
-                      </li>
-                    ))}
-                    <li>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => setDarkMode(!darkMode)}
-                        aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-                      >
-                        {darkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
-                      </Button>
-                    </li>
-                  </ul>
-                </SheetContent>
-              </Sheet>
-            </nav>
-          </div>
-        </header>
+        <Navbar
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}
+          activeSection={activeSection}
+          scrollToSection={scrollToSection}
+          scrollToTop={scrollToTop}
+        />
 
-        <main className="container mx-auto space-y-24 px-4 py-8">
+        <main className="container mx-auto space-y-24 px-4 pb-16 pt-24">
           {memoizedHero}
-
           {memoizedAbout}
           {memoizedExperience}
           {memoizedProjects}
           {memoizedLeadership}
-
-          <FadeInSection>
-            <section id="contact">
-              <div className="mx-auto max-w-4xl">
-                <h2 className="font-playfair mb-8 text-center text-3xl font-bold">Contact</h2>
-                <p className="font-playfair mb-6 text-center text-lg">
-                  I&apos;m always open to new opportunities and collaborations. Whether you have a
-                  project in mind or just want to connect, feel free to reach out!
-                </p>
-                <div className="flex justify-center space-x-10">
-                  <div className="flex justify-center space-x-10">
-                    <a
-                      href="https://github.com/Khannakhushi"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button className="h-10 w-10 text-lg" variant="ghost" size="icon">
-                        <Github className="h-8 w-8" />
-                        <span className="sr-only">GitHub</span>
-                      </Button>
-                    </a>
-
-                    <a
-                      href="https://www.linkedin.com/in/khyaati-khanna/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button className="h-10 w-10 text-lg" variant="ghost" size="icon">
-                        <Linkedin className="h-8 w-8" />
-                        <span className="sr-only">LinkedIn</span>
-                      </Button>
-                    </a>
-
-                    <a
-                      href="https://medium.com/@khannakhushi93"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button className="h-10 w-10 text-lg" variant="ghost" size="icon">
-                        <MediumIcon className="h-8 w-8" />
-                        <span className="sr-only">Medium</span>
-                      </Button>
-                    </a>
-
-                    <a
-                      href="https://mail.google.com/mail/?view=cm&fs=1&to=khannakhyaati@gmail.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button className="h-10 w-10 text-lg" variant="ghost" size="icon">
-                        <Mail className="h-8 w-8" />
-                        <span className="sr-only">Email</span>
-                      </Button>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </FadeInSection>
-          {/* Scroll to Top Button */}
+          {memoizedContact}
         </main>
-        {showScrollButton && (
-          <Button
-            onClick={scrollToTop}
-            className="fixed bottom-4 right-4"
-            aria-label="Scroll to top"
-            size="icon"
-          >
-            <ArrowUp className="h-6 w-6" />
-          </Button>
-        )}
-        <footer className="font-playfair flex items-center justify-center px-4 pb-6 pt-2">
-          <p className="flex items-center justify-center gap-2">
-            &copy; {new Date().getFullYear()} Made with <Heart className="" size={16} /> by Khyaati.
-          </p>
-        </footer>
+
+        <AnimatePresence>
+          {showScrollButton && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed bottom-4 right-4"
+            >
+              <Button
+                onClick={scrollToTop}
+                aria-label="Scroll to top"
+                size="icon"
+                className="h-10 w-10 rounded-full shadow-lg"
+              >
+                <ArrowUp className="h-5 w-5" />
+              </Button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <Footer />
       </div>
     </div>
   );
