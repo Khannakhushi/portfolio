@@ -159,20 +159,6 @@ export default function Experience() {
                     <div className="prose prose-sm md:prose-base max-w-none flex-grow">
                       <p className="leading-relaxed">{experiences[activeIndex].description}</p>
                     </div>
-
-                    <motion.div
-                      className="mt-8 self-end"
-                      whileHover={{ x: 5 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <a
-                        href="#"
-                        className="group inline-flex items-center text-sm font-medium text-primary"
-                      >
-                        <span>View details</span>
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </a>
-                    </motion.div>
                   </div>
                 </motion.div>
               </AnimatePresence>

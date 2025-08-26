@@ -67,8 +67,8 @@ export default function About() {
   ];
 
   const categories = [
-    { name: 'Languages', items: ['C++', 'Java', 'Javascript', 'TypeScript', 'Swift', 'Python'] },
-    { name: 'Frontend', items: ['React', 'Next.js', 'AngularJS', 'TailwindCSS'] },
+    { name: 'Languages', items: ['Java', 'Javascript', 'Typescript', 'Python', 'Swift', 'C++'] },
+    { name: 'Frontend', items: ['React', 'Next.js', 'AngularJS', 'SwiftUI', 'TailwindCSS'] },
     { name: 'Backend', items: ['Spring Boot', 'Node.js', 'Express', 'FastAPI', 'AWS'] },
     { name: 'Tools', items: ['Git', 'CI/CD', 'Docker'] },
   ];
@@ -159,7 +159,7 @@ export default function About() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
               >
-                I&apos;m a passionate software engineer and a junior at the University of Houston,
+                I&apos;m a passionate software engineer and a senior at the University of Houston,
                 majoring in Computer Science with a minor in Mathematics. Set to graduate in
                 December 2025, I&apos;m on a journey to become a versatile software engineer with a
                 focus on full-stack development.
@@ -213,20 +213,20 @@ export default function About() {
                   title: 'University of Houston',
                   subtitle: 'Class of 2025',
                   description:
-                    'Major in Computer Science with minors in Business Administration and Mathematics',
+                    'Major in Computer Science with minors in Business Administration and Mathematics.',
                 },
                 {
                   icon: <Briefcase className="h-5 w-5" />,
-                  title: 'Software Engineer Intern at USAA',
-                  subtitle: 'Summer 2024',
+                  title: 'Software Engineer Intern at JPMC',
+                  subtitle: 'Summer 2025',
                   description:
-                    'Led migration of applications to Spring Boot and improved UI with AngularJS',
+                    'Built a React.js UI dashboard with MDS, modernized tools for ~30% faster navigation, and developed a kafka pipeline with AWS deployment & 90%+ test coverage.',
                 },
                 {
                   icon: <Code className="h-5 w-5" />,
                   title: 'Teaching Assistant',
                   subtitle: 'University of Houston - CS Department',
-                  description: 'Conducted weekly labs for 100+ students in Data Structures',
+                  description: 'Conducted weekly labs for 100+ students in Data Structures.',
                 },
               ].map((item, i) => (
                 <motion.div
@@ -364,7 +364,7 @@ export default function About() {
                 <li>
                   <div className="flex items-center">
                     <div className="mr-2 h-2 w-2 rounded-full bg-primary/60"></div>
-                    <span className="font-medium">Synkly</span>
+                    <span className="font-medium">Synkly - iOS App</span>
                   </div>
                   <p className="mt-1 pl-4 text-xs opacity-80">
                     Cross-Platform Playlist Synchronization and Music Discovery App
@@ -373,11 +373,18 @@ export default function About() {
                 <li>
                   <div className="flex items-center">
                     <div className="mr-2 h-2 w-2 rounded-full bg-primary/60"></div>
-                    <span className="font-medium">DevMatch</span>
+                    <span className="font-medium">DevMatch - Web App</span>
                   </div>
                   <p className="mt-1 pl-4 text-xs opacity-80">
                     Tinder-style swipe website to match developers with their perfect dev tools
                   </p>
+                </li>
+                <li>
+                  <div className="flex items-center">
+                    <div className="mr-2 h-2 w-2 rounded-full bg-primary/60"></div>
+                    <span className="font-medium">Syntora - Web App</span>
+                  </div>
+                  <p className="mt-1 pl-4 text-xs opacity-80">AI-Powered Visual Creation Studio</p>
                 </li>
               </ul>
             </motion.div>

@@ -14,6 +14,7 @@ interface Project {
   image?: string;
   imagePosition?: string;
   github: string;
+  link?: string;
 }
 
 interface ProjectCardProps {
@@ -94,7 +95,7 @@ function ProjectCard({ project, isFeature }: ProjectCardProps) {
         )}
         <p className="mb-4 text-sm opacity-80">{project.description}</p>
 
-        <div className="mt-auto flex justify-end">
+        <div className="mt-auto flex justify-end gap-2">
           <a
             href={project.github}
             target="_blank"
@@ -103,6 +104,16 @@ function ProjectCard({ project, isFeature }: ProjectCardProps) {
           >
             <Github className="h-4 w-4" />
           </a>
+          {project.link && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+            >
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          )}
         </div>
       </div>
     </motion.div>
