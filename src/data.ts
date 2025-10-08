@@ -10,7 +10,8 @@ export const experiences = [
     title: 'Software Development Engineer Intern',
     company: 'Amazon',
     period: 'Sept 2025 - Present',
-    description: 'Incoming Software Development Engineer Intern at Amazon in Fall 2025.',
+    description:
+      'Automated the change management workflow by building a Python FastAPI backend with a custom MCP server, reducing the time to create 20 change requests from 4 days to <15 minutes. Developed a React.js chatbot interface integrated with Amazon Q (LLM) and authored standardized templates for change and ticket requests, enabling AI-generated change records with validation and streamlined management.',
   },
   {
     title: 'Software Engineer Intern',
@@ -70,6 +71,62 @@ export const leadership = [
 
 export const projects = [
   {
+    name: 'Contrack',
+    subsection: 'Consulting Management System',
+    description:
+      'Developed a comprehensive consulting forms, employee timesheet, invoice, and expenses management system. Built with Next.js, Tailwind CSS, Firebase, and smooth Framer Motion animations for enhanced user experience.',
+    image: '/contrack.png',
+    imagePosition: 'object-top',
+    github: 'https://github.com/geeth24/contrack',
+    link: 'https://contrack.rsft.co',
+  },
+  {
+    name: 'Wharf',
+    subsection: 'Docker Registry UI',
+    description:
+      'Built a modern UI for Docker registry management with Next.js, Tailwind CSS, and Framer Motion animations. Features repository browsing, tag management, and real-time registry monitoring with an elegant interface.',
+    image: '/wharf.png',
+    imagePosition: 'object-top',
+    github: 'https://github.com/geeth24/wharf',
+    link: 'https://wharf.rsft.co',
+  },
+  {
+    name: 'Syntora',
+    subsection: 'AI-Powered Visual Creation Studio',
+    description:
+      'Developed a premium AI-powered studio that transforms ideas into stunning visuals with cutting-edge image generation and prompt crafting. Syntora empowers designers, marketers, and developers to create and integrate high-quality AI imagery with ease.',
+    image: '/syntora.png',
+    github: 'https://github.com/geeth24/syntora',
+    link: 'https://syntora.app/',
+  },
+  {
+    name: 'Portfolio Website',
+    subsection: 'Frontend Development',
+    description:
+      'Designed and developed a personal portfolio website using Next.js and TailwindCSS. Features dark mode, interactive animations with Framer Motion, and an optimized layout for showcasing projects and skills.',
+    image: '/portfolio-pic.png',
+    github: 'https://github.com/khannakhushi/portfolio',
+    link: 'https://khyaatikhanna.com/',
+  },
+  {
+    name: 'DevMatch',
+    subsection: 'Developer Tools Discovery',
+    description:
+      'Created a personalized platform to help developers discover the perfect set of development tools based on their specific needs, preferences, and workflow. Built with React, Node.js, and a recommendation algorithm to match users with optimal toolsets.',
+    image: '/devmatch.png',
+    github: 'https://github.com/khannakhushi/devmatch',
+    link: 'https://devmatch-web.vercel.app/',
+  },
+  {
+    name: 'Tonaire',
+    subsection: 'AI Tone Stylist',
+    description:
+      'Built an AI-powered tone stylist that rephrases sentences and generates stylish content for LinkedIn, Instagram, and other social platforms. Supports multiple tones—professional, casual, funny, emotional—and features elegant UI, dark/light themes, and smooth animations.',
+    image: '/tonaire.png',
+    github: 'https://github.com/Khannakhushi/tonaire',
+    link: 'https://tonaire.khyaatikhanna.com/',
+  },
+  {
     name: 'AbideAI - Code For Good',
     subsection: 'JP Morgan Chase - Social Imapct',
     description:
@@ -96,15 +153,6 @@ export const projects = [
     github: 'https://github.com/sanaakbani/SoftwareDesignProject',
   },
   {
-    name: 'Portfolio Website',
-    subsection: 'Frontend Development',
-    description:
-      'Designed and developed a personal portfolio website using Next.js and TailwindCSS. Features dark mode, interactive animations with Framer Motion, and an optimized layout for showcasing projects and skills.',
-    image: '/portfolio-pic.png',
-    github: 'https://github.com/khannakhushi/portfolio',
-    link: 'https://khyaatikhanna.com/',
-  },
-  {
     name: 'The Drill Game',
     subsection: 'ConocoPhillips - 1st Place',
     description:
@@ -112,32 +160,5 @@ export const projects = [
     image: '/innovation.jpeg',
     github:
       'https://www.linkedin.com/posts/khyaati-khanna_innovation-teamwork-dataanalysis-activity-7246916343730479104-dBj2?utm_source=share&utm_medium=member_desktop',
-  },
-  {
-    name: 'DevMatch',
-    subsection: 'Developer Tools Discovery',
-    description:
-      'Created a personalized platform to help developers discover the perfect set of development tools based on their specific needs, preferences, and workflow. Built with React, Node.js, and a recommendation algorithm to match users with optimal toolsets.',
-    image: '/devmatch.png',
-    github: 'https://github.com/khannakhushi/devmatch',
-    link: 'https://devmatch-web.vercel.app/',
-  },
-  {
-    name: 'Syntora',
-    subsection: 'AI-Powered Visual Creation Studio',
-    description:
-      'Developed a premium AI-powered studio that transforms ideas into stunning visuals with cutting-edge image generation and prompt crafting. Syntora empowers designers, marketers, and developers to create and integrate high-quality AI imagery with ease.',
-    image: '/syntora.png',
-    github: 'https://github.com/geeth24/syntora',
-    link: 'https://syntora.app/',
-  },
-  {
-    name: 'Tonaire',
-    subsection: 'AI Tone Stylist',
-    description:
-      'Built an AI-powered tone stylist that rephrases sentences and generates stylish content for LinkedIn, Instagram, and other social platforms. Supports multiple tones—professional, casual, funny, emotional—and features elegant UI, dark/light themes, and smooth animations.',
-    image: '/tonaire.png',
-    github: 'https://github.com/Khannakhushi/tonaire',
-    link: 'https://tonaire.khyaatikhanna.com/',
   },
 ];

@@ -1,11 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { projects } from '@/data';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowUpRight, Github } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { ArrowUpRight, Github, X, Maximize2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface Project {
   name: string;
@@ -20,9 +20,12 @@ interface Project {
 interface ProjectCardProps {
   project: Project;
   isFeature: boolean;
+  onImageClick: () => void;
 }
 
 export default function Projects() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   return (
     <section id="projects" className="container mx-auto px-4 py-16">
       <div className="mx-auto max-w-6xl">
@@ -39,12 +42,10 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        {/* Masonry Layout */}
+        {/* Projects Grid */}
         <div className="relative">
-          {/* Projects Grid */}
           <div className="relative grid grid-cols-1 gap-6 md:grid-cols-3">
             {projects.map((project, index) => {
-              // Only the first project spans 2 columns on desktop
               const isFeature = index === 0;
 
               return (
@@ -56,18 +57,107 @@ export default function Projects() {
                   transition={{ duration: 0.7, delay: index * 0.1 }}
                   viewport={{ once: true, margin: '-50px' }}
                 >
-                  <ProjectCard project={project} isFeature={isFeature} />
+                  <ProjectCard
+                    project={project}
+                    isFeature={isFeature}
+                    onImageClick={() => setSelectedProject(project)}
+                  />
                 </motion.div>
               );
             })}
           </div>
         </div>
+
+        {/* Fullscreen Modal */}
+        <AnimatePresence>
+          {selectedProject && (
+            <motion.div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 p-4 backdrop-blur-md"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setSelectedProject(null)}
+            >
+              <motion.button
+                className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
+                onClick={() => setSelectedProject(null)}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <X className="h-5 w-5" />
+              </motion.button>
+
+              <motion.div
+                className="relative flex max-h-[90vh] w-full max-w-6xl flex-col overflow-hidden rounded-2xl border border-primary/20 bg-card shadow-2xl"
+                initial={{ scale: 0.9, y: 20 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.9, y: 20 }}
+                transition={{ duration: 0.3, type: 'spring', damping: 25 }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                {selectedProject.image && (
+                  <div className="max-h-[70vh] w-full overflow-y-auto">
+                    <div className="relative w-full">
+                      <Image
+                        src={selectedProject.image}
+                        alt={selectedProject.name}
+                        width={1920}
+                        height={1080}
+                        className="h-auto w-full object-contain object-top"
+                        sizes="(max-width: 1536px) 100vw, 1536px"
+                        priority
+                      />
+                    </div>
+                  </div>
+                )}
+
+                <div className="flex-shrink-0 border-t border-primary/10 bg-card/50 p-6">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1">
+                      <h3 className="mb-2 text-2xl font-bold">{selectedProject.name}</h3>
+                      {selectedProject.subsection && (
+                        <p className="mb-3 text-sm font-medium uppercase tracking-wide text-primary">
+                          {selectedProject.subsection}
+                        </p>
+                      )}
+                      <p className="text-sm opacity-80">{selectedProject.description}</p>
+                    </div>
+
+                    <div className="flex gap-2">
+                      <a
+                        href={selectedProject.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary transition-all hover:scale-110 hover:bg-primary hover:text-primary-foreground"
+                        aria-label="View GitHub repository"
+                      >
+                        <Github className="h-5 w-5" />
+                      </a>
+                      {selectedProject.link && (
+                        <a
+                          href={selectedProject.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary transition-all hover:scale-110 hover:bg-primary hover:text-primary-foreground"
+                          aria-label="View live project"
+                        >
+                          <ArrowUpRight className="h-5 w-5" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
 }
 
-function ProjectCard({ project, isFeature }: ProjectCardProps) {
+function ProjectCard({ project, isFeature, onImageClick }: ProjectCardProps) {
   return (
     <motion.div
       className="group h-full overflow-hidden rounded-xl border border-primary/10 bg-card/30 shadow-lg backdrop-blur-sm"
@@ -76,7 +166,19 @@ function ProjectCard({ project, isFeature }: ProjectCardProps) {
     >
       {/* Image Container */}
       {project.image && (
-        <div className={`relative overflow-hidden ${isFeature ? 'h-64' : 'h-48'}`}>
+        <div
+          className={`group/image relative cursor-pointer overflow-hidden ${isFeature ? 'h-64' : 'h-48'}`}
+          onClick={onImageClick}
+        >
+          <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover/image:bg-black/20">
+            <motion.div
+              className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/90 text-primary-foreground opacity-0 transition-opacity duration-300 group-hover/image:opacity-100"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <Maximize2 className="h-5 w-5" />
+            </motion.div>
+          </div>
           <Image
             src={project.image}
             alt={project.name}
