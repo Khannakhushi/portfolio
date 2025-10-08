@@ -77,7 +77,7 @@ export const projects = [
       'Developed a comprehensive consulting forms, employee timesheet, invoice, and expenses management system. Built with Next.js, Tailwind CSS, Firebase, and smooth Framer Motion animations for enhanced user experience.',
     image: '/contrack.png',
     imagePosition: 'object-top',
-    github: 'https://github.com/geeth24/contrack',
+    github: '',
     link: 'https://contrack.rsft.co',
   },
   {
@@ -87,7 +87,7 @@ export const projects = [
       'Built a modern UI for Docker registry management with Next.js, Tailwind CSS, and Framer Motion animations. Features repository browsing, tag management, and real-time registry monitoring with an elegant interface.',
     image: '/wharf.png',
     imagePosition: 'object-top',
-    github: 'https://github.com/geeth24/wharf',
+    github: 'https://github.com/khannakhushi/wharf',
     link: 'https://wharf.rsft.co',
   },
   {

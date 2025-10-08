@@ -125,15 +125,17 @@ export default function Projects() {
                     </div>
 
                     <div className="flex gap-2">
-                      <a
-                        href={selectedProject.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary transition-all hover:scale-110 hover:bg-primary hover:text-primary-foreground"
-                        aria-label="View GitHub repository"
-                      >
-                        <Github className="h-5 w-5" />
-                      </a>
+                      {selectedProject.github && (
+                        <a
+                          href={selectedProject.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary transition-all hover:scale-110 hover:bg-primary hover:text-primary-foreground"
+                          aria-label="View GitHub repository"
+                        >
+                          <Github className="h-5 w-5" />
+                        </a>
+                      )}
                       {selectedProject.link && (
                         <a
                           href={selectedProject.link}
@@ -198,14 +200,16 @@ function ProjectCard({ project, isFeature, onImageClick }: ProjectCardProps) {
         <p className="mb-4 text-sm opacity-80">{project.description}</p>
 
         <div className="mt-auto flex justify-end gap-2">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
-          >
-            <Github className="h-4 w-4" />
-          </a>
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+            >
+              <Github className="h-4 w-4" />
+            </a>
+          )}
           {project.link && (
             <a
               href={project.link}
