@@ -1,205 +1,158 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import React, { useEffect, useState, useRef } from 'react';
+'use client';
+
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  useMotionValue,
+  useMotionTemplate,
+} from 'framer-motion';
+import React, { useRef, MouseEvent } from 'react';
 import Image from 'next/image';
+import { ArrowRight, Download, Mail } from 'lucide-react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 function Hero() {
-  const texts = [
-    'Software Engineer',
-    'Designer',
-    'Computer Science Student',
-    'Artist',
-    'Music Enthusiast',
-  ];
-  const [index, setIndex] = useState(0);
-  const [isHovering, setIsHovering] = useState(false);
-  const [showEasterEgg, setShowEasterEgg] = useState(false);
-  const imageRef = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % texts.length);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, [texts.length]);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-  const handleEasterEgg = () => {
-    setShowEasterEgg(true);
-    setTimeout(() => setShowEasterEgg(false), 5000); // Hide after 5 seconds
-  };
-
-  const textVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
-    exit: { opacity: 0, y: -20, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
-  };
-
-  const imageVariants = {
-    initial: { scale: 0.9, opacity: 0 },
-    animate: { scale: 1, opacity: 1, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
-    hover: { scale: 1.05, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
-  };
-
-  // Parallax effect for image
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!imageRef.current || !isHovering) return;
-
-      const { clientX, clientY } = e;
-      const { innerWidth, innerHeight } = window;
-
-      // Calculate position between -15 and 15
-      const moveX = (clientX / innerWidth - 0.5) * 20;
-      const moveY = (clientY / innerHeight - 0.5) * 20;
-
-      // Apply transform
-      imageRef.current.style.transform = `perspective(1000px) rotateX(${moveY * -0.5}deg) rotateY(${moveX}deg)`;
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [isHovering]);
+  function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
 
   return (
-    <section className="flex min-h-[85vh] flex-col items-center justify-center overflow-hidden py-16 md:py-20">
-      <motion.div
-        className="grid w-full max-w-6xl grid-cols-1 items-center gap-8 px-4 md:grid-cols-2 md:gap-16"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        {/* Text Content */}
-        <div className="order-2 flex flex-col items-center space-y-6 md:order-1 md:items-start">
-          <motion.h2
-            className="text-center text-xl font-light tracking-wider md:text-left md:text-2xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Hello, I&apos;m
-          </motion.h2>
+    <section
+      ref={ref}
+      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden py-20"
+      onMouseMove={handleMouseMove}
+    >
+      {/* Dynamic Background Grid */}
+      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
 
+      {/* Spotlight Effect */}
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              650px circle at ${mouseX}px ${mouseY}px,
+              rgba(251, 146, 60, 0.15),
+              transparent 80%
+            )
+          `,
+        }}
+      />
+
+      <div className="container relative z-10 flex flex-col items-center gap-12 md:flex-row md:justify-between">
+        {/* Text Content */}
+        <motion.div style={{ y: y1 }} className="flex flex-1 flex-col items-start text-left">
           <motion.h1
-            className="cursor-pointer text-center font-calligraphy text-5xl font-bold md:text-left md:text-7xl"
+            className="font-great-vibes mt-16 text-6xl font-light tracking-wide text-foreground md:mt-6 md:text-8xl lg:text-9xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            onClick={handleEasterEgg}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Khyaati Khanna
+            Khyaati <br />
+            <span className="text-orange-500">Khanna</span>
           </motion.h1>
 
-          <div className="flex h-12 items-center justify-center md:justify-start">
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={index}
-                variants={textVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className="font-playfair text-xl md:text-2xl"
-              >
-                {texts[index]}
-              </motion.p>
-            </AnimatePresence>
-          </div>
-
           <motion.p
-            className="max-w-md text-center text-lg opacity-80 md:text-left"
+            className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
-            A passionate software engineer and computer science student at the University of
-            Houston, crafting digital experiences with creativity and precision.
+            Building digital experiences that blend{' '}
+            <span className="font-semibold text-foreground">engineering precision</span> with{' '}
+            <span className="font-semibold text-foreground">creative soul</span>. A Software
+            Engineer passionate about creating intuitive and impactful applications.
           </motion.p>
 
           <motion.div
-            className="flex space-x-4 pt-2"
+            className="mt-8 flex flex-wrap gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <motion.a
-              href="#projects"
-              className="rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              View Projects
-            </motion.a>
-            <motion.a
-              href="#contact"
-              className="rounded-full border border-primary bg-transparent px-6 py-3 font-medium"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Contact Me
-            </motion.a>
+            <Link href="/Khanna_Resume.pdf" target="_blank" rel="noopener noreferrer" passHref>
+              <Button variant="default" size="lg">
+                Resume <Download className="h-4 w-4" />
+              </Button>
+            </Link>
+
+            <a href="#contact">
+              <div className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-gradient-to-tr from-amber-500 to-rose-600 p-0.5 font-medium text-white shadow-lg transition-all hover:shadow-xl">
+                <span className="relative flex h-full w-full items-center justify-center rounded-full bg-background px-8 py-3 text-lg font-medium text-foreground transition-all duration-300 group-hover:bg-transparent group-hover:text-white">
+                  Contact Me
+                </span>
+              </div>
+            </a>
           </motion.div>
-        </div>
+        </motion.div>
 
-        {/* Image */}
-        <div className="relative order-1 flex justify-center md:order-2 md:justify-end">
-          {/* Outer decorative border */}
-          <div className="relative max-w-full rounded-2xl p-2">
-            <div className="absolute inset-0 rounded-2xl border-[2px] border-black/70 dark:border-white/70"></div>
+        {/* Visual/Image */}
+        <motion.div style={{ y: y2 }} className="relative flex flex-1 items-center justify-center">
+          <div className="relative h-[400px] w-[300px] md:h-[500px] md:w-[400px]">
+            {/* Decorative elements behind */}
             <motion.div
-              ref={imageRef}
-              initial="initial"
-              animate="animate"
-              whileHover="hover"
-              variants={imageVariants}
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => {
-                setIsHovering(false);
-                if (imageRef.current) {
-                  imageRef.current.style.transform = '';
-                }
-              }}
-              className="relative max-w-full overflow-hidden rounded-2xl border-4 border-primary/20 shadow-2xl"
-              style={{
-                transformStyle: 'preserve-3d',
-                transition: 'transform 0.1s ease-out',
-              }}
-            >
-              {/* Easter Egg - inside the image container */}
-              <AnimatePresence>
-                {showEasterEgg && (
-                  <motion.div
-                    className="absolute inset-0 z-30 flex items-center justify-center overflow-hidden"
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <Image
-                      src="/wall burst.png"
-                      alt="Easter Egg"
-                      width={600}
-                      height={600}
-                      className="h-[110%] w-[110%] object-contain"
-                      priority
-                    />
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+              className="absolute -inset-4 rounded-full border border-dashed border-orange-500/20 opacity-50"
+            />
+            <motion.div
+              animate={{ rotate: -360 }}
+              transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+              className="absolute -inset-12 rounded-full border border-dashed border-rose-500/20 opacity-30"
+            />
 
-              <Image
-                src="/me.jpeg"
-                alt="Khyaati Khanna"
-                width={500}
-                height={500}
-                className="h-80 w-80 object-cover md:h-96 md:w-96"
-                priority
-              />
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.5 }}
-              />
-            </motion.div>
+            <div className="group relative h-full w-full overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-white/0 p-2 backdrop-blur-xl transition-transform duration-500 hover:-translate-y-2 hover:rotate-1">
+              <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/10 via-transparent to-rose-500/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="relative h-full w-full overflow-hidden rounded-xl bg-zinc-900">
+                <Image
+                  src="/me.jpeg"
+                  alt="Khyaati Khanna"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
+
+                <div className="absolute bottom-0 left-0 w-full p-6">
+                  <div className="flex items-center gap-2">
+                    <div className="h-1 w-12 rounded-full bg-orange-500" />
+                    <span className="text-xs font-medium uppercase tracking-widest text-orange-500">
+                      Developer
+                    </span>
+                  </div>
+                  <p className="mt-2 text-sm text-zinc-300">Previously @Amazon, @JPMorganChase</p>
+                </div>
+              </div>
+            </div>
           </div>
+        </motion.div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+      >
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-[10px] uppercase tracking-widest text-muted-foreground">
+            Scroll
+          </span>
+          <div className="h-10 w-[1px] bg-gradient-to-b from-transparent via-orange-500 to-transparent" />
         </div>
       </motion.div>
     </section>

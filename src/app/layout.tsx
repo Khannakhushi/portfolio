@@ -1,8 +1,14 @@
 import type { Metadata } from 'next';
-import { Montserrat } from 'next/font/google';
+import { Montserrat, Great_Vibes } from 'next/font/google';
 import './globals.css';
 import { Analytics } from '@vercel/analytics/react';
+
 const m = Montserrat({ subsets: ['latin'], variable: '--font-montserrat' });
+const greatVibes = Great_Vibes({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-great-vibes',
+});
 
 export const metadata: Metadata = {
   title: 'Khyaati Khanna | Software Engineer & CS Student',
@@ -40,8 +46,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="overflow-x-hidden">
-      <body className={`${m.className} overflow-x-hidden`}>
-        {children}
+      <body className={`${m.className} ${greatVibes.variable} overflow-x-hidden`}>
+        <div className="pointer-events-none fixed left-0 top-0 z-0 h-full w-full overflow-hidden">
+          <div className="absolute -left-[10%] -top-[20%] h-[700px] w-[700px] rounded-full bg-amber-500/20 blur-[100px]" />
+          <div className="absolute -right-[20%] top-[40%] h-[800px] w-[800px] rounded-full bg-rose-500/20 blur-[100px]" />
+          <div className="absolute -bottom-[20%] left-[20%] h-[600px] w-[600px] rounded-full bg-orange-500/20 blur-[80px]" />
+        </div>
+        <div className="relative z-10">{children}</div>
         <Analytics />
       </body>
     </html>

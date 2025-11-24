@@ -1,43 +1,24 @@
 'use client';
 
-import { useState, useEffect, ReactNode } from 'react';
-import { motion, useScroll, AnimatePresence } from 'framer-motion';
-import { ArrowUp, Heart } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowUp } from 'lucide-react';
 import Hero from '@/components/hero';
-import About from '@/components/about';
 import Experience from '@/components/experience';
-import Leadership from '@/components/leadership';
 import Projects from '@/components/projects';
-import Image from 'next/image';
-import { useMemo } from 'react';
-import MediumIcon from '@/components/medium-icon';
-import Link from 'next/link';
-import Contact from '@/components/contact';
 import Footer from '@/components/footer';
 import Navbar from '@/components/navbar';
 
-type FadeInSectionProps = {
-  children: ReactNode;
-  delay?: number;
-};
-
 export default function Page() {
   const [darkMode, setDarkMode] = useState(true);
-  const { scrollY } = useScroll();
   const [showScrollButton, setShowScrollButton] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowScrollButton(true);
-      } else {
-        setShowScrollButton(false);
-      }
+      setShowScrollButton(window.scrollY > 300);
 
-      // Update active section based on scroll position
-      const sections = ['about', 'experience', 'projects', 'leadership', 'contact'];
+      const sections = ['experience', 'projects', 'contact'];
       const currentSection = sections.find((section) => {
         const element = document.getElementById(section);
         if (!element) return false;
@@ -63,83 +44,6 @@ export default function Page() {
     }
   }, [darkMode]);
 
-  const fadeInVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: (delay = 0) => ({
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay },
-    }),
-  };
-
-  const FadeInSection = ({ children, delay = 0 }: FadeInSectionProps) => {
-    return (
-      <motion.div
-        initial="hidden"
-        variants={fadeInVariants}
-        whileInView="visible"
-        custom={delay}
-        viewport={{ once: true, margin: '-100px' }}
-      >
-        {children}
-      </motion.div>
-    );
-  };
-
-  const memoizedHero = useMemo(
-    () => (
-      <FadeInSection>
-        <Hero />
-      </FadeInSection>
-    ),
-    [],
-  );
-
-  const memoizedAbout = useMemo(
-    () => (
-      <FadeInSection delay={0.2}>
-        <About />
-      </FadeInSection>
-    ),
-    [],
-  );
-
-  const memoizedExperience = useMemo(
-    () => (
-      <FadeInSection delay={0.3}>
-        <Experience />
-      </FadeInSection>
-    ),
-    [],
-  );
-
-  const memoizedProjects = useMemo(
-    () => (
-      <FadeInSection delay={0.4}>
-        <Projects />
-      </FadeInSection>
-    ),
-    [],
-  );
-
-  const memoizedLeadership = useMemo(
-    () => (
-      <FadeInSection delay={0.5}>
-        <Leadership />
-      </FadeInSection>
-    ),
-    [],
-  );
-
-  const memoizedContact = useMemo(
-    () => (
-      <FadeInSection delay={0.6}>
-        <Contact />
-      </FadeInSection>
-    ),
-    [],
-  );
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -150,19 +54,20 @@ export default function Page() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const headerOffset = document.querySelector('header')?.offsetHeight || 0;
-      const paddingOffset = 50;
-      const yPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
       window.scrollTo({
-        top: yPosition - headerOffset - paddingOffset,
+        top: offsetPosition,
         behavior: 'smooth',
       });
     }
   };
 
   return (
-    <div className={`min-h-screen ${darkMode ? 'dark' : ''} overflow-hidden`}>
-      <div className="min-h-screen overflow-x-hidden bg-gradient-to-br from-[hsl(var(--bg-gradient-from))] via-[hsl(var(--bg-gradient-via))] to-[hsl(var(--bg-gradient-to))] text-[hsl(var(--text-color))] transition-all duration-500">
+    <div className={`min-h-screen ${darkMode ? 'dark' : ''}`}>
+      <div className="relative min-h-screen overflow-hidden transition-colors duration-500">
         <Navbar
           darkMode={darkMode}
           setDarkMode={setDarkMode}
@@ -171,33 +76,27 @@ export default function Page() {
           scrollToTop={scrollToTop}
         />
 
-        <main className="container mx-auto space-y-24 overflow-x-hidden px-4 pb-16 pt-24">
-          {memoizedHero}
-          {memoizedAbout}
-          {memoizedExperience}
-          {memoizedProjects}
-          {memoizedLeadership}
-          {memoizedContact}
+        <main className="relative">
+          <Hero />
+          <Experience />
+          <Projects />
         </main>
 
         <AnimatePresence>
           {showScrollButton && (
-            <motion.div
+            <motion.button
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
-              transition={{ duration: 0.3 }}
-              className="fixed bottom-4 right-4"
+              transition={{ duration: 0.2 }}
+              onClick={scrollToTop}
+              className="fixed bottom-8 right-8 z-40 flex h-12 w-12 items-center justify-center rounded-full border-2 border-orange-500/50 bg-background shadow-2xl shadow-orange-500/20 backdrop-blur-xl transition-all hover:border-orange-500 hover:bg-orange-500/10 hover:shadow-orange-500/50"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Scroll to top"
             >
-              <Button
-                onClick={scrollToTop}
-                aria-label="Scroll to top"
-                size="icon"
-                className="h-10 w-10 rounded-full shadow-lg"
-              >
-                <ArrowUp className="h-5 w-5" />
-              </Button>
-            </motion.div>
+              <ArrowUp className="h-5 w-5 text-orange-500" />
+            </motion.button>
           )}
         </AnimatePresence>
 

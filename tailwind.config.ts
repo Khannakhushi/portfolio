@@ -60,15 +60,16 @@ const config = {
       fontFamily: {
         calligraphy: ['"Dancing Script"', 'cursive'],
         montserrat: ['Montserrat', 'sans-serif'],
+        'great-vibes': ['var(--font-great-vibes)'],
       },
       keyframes: {
         fadeInRight: {
-          '0%': { opacity: 0, transform: 'translateX(50px)' },
-          '100%': { opacity: 1, transform: 'translateX(0)' },
+          '0%': { opacity: '0', transform: 'translateX(50px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
         },
         fadeInLeft: {
-          '0%': { opacity: 0, transform: 'translateX(-50px)' },
-          '100%': { opacity: 1, transform: 'translateX(0)' },
+          '0%': { opacity: '0', transform: 'translateX(-50px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
         },
       },
       animation: {
@@ -83,6 +84,6 @@ const config = {
       width: ['data-active'],
     },
   },
-};
+} satisfies Config;
 
 export default config;

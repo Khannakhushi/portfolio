@@ -11,7 +11,7 @@ export const experiences = [
     company: 'Amazon',
     period: 'Sept 2025 - Present',
     description:
-      'Automated the change management workflow by building a Python FastAPI backend with a custom MCP server, reducing the time to create 20 change requests from 4 days to <15 minutes. Developed a React.js chatbot interface integrated with Amazon Q (LLM) and authored standardized templates for change and ticket requests, enabling AI-generated change records with validation and streamlined management.',
+      'Streamlined the Same Day Delivery zipcode automation process, reducing manual effort from 2-4 hours to under 10 minutes. Built 2 custom MCP servers and a Python FastAPI backend to automate the addition of modifications and memoization for delivery boundaries, integrating the workflow seamlessly with the Amazon Q CLI.',
   },
   {
     title: 'Software Engineer Intern',
@@ -143,14 +143,6 @@ export const projects = [
       'Built an NLP-based flight booking assistant integrating OpenAI, Amadeus, Google Maps, and MongoDB APIs. The platform enables users to plan trips effortlessly with a user-friendly interface.',
     image: '/flightGPT.jpeg',
     github: 'https://github.com/zoubida-rezki/TechTitans',
-  },
-  {
-    name: 'Fuel Calculator',
-    subsection: 'Software Design',
-    description:
-      'Developed a web application to calculate optimal fuel consumption for vehicles, utilizing user inputs and real-time fuel price data. Built with React and Node.js for high performance.',
-    image: '/fuel-calc.jpeg',
-    github: 'https://github.com/sanaakbani/SoftwareDesignProject',
   },
   {
     name: 'The Drill Game',
