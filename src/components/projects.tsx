@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { projects } from '@/data';
 import Image from 'next/image';
 import { ArrowUpRight, Github, X, Rocket, ExternalLink, Code2 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 
 interface Project {
@@ -17,7 +17,7 @@ interface Project {
   link?: string;
 }
 
-const container = {
+const container: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -27,7 +27,7 @@ const container = {
   },
 };
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, y: 30 },
   show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 50 } },
 };
@@ -41,8 +41,8 @@ export default function Projects() {
     <section id="projects" className="relative py-24">
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute -right-[10%] -top-[20%] h-[500px] w-[500px] rounded-full bg-rose-500/10 blur-[100px]" />
-        <div className="absolute -left-[10%] bottom-[20%] h-[500px] w-[500px] rounded-full bg-amber-500/10 blur-[100px]" />
+        <div className="absolute -top-[20%] -right-[10%] h-[500px] w-[500px] rounded-full bg-rose-500/10 blur-[100px]" />
+        <div className="absolute bottom-[20%] -left-[10%] h-[500px] w-[500px] rounded-full bg-amber-500/10 blur-[100px]" />
       </div>
 
       <div className="container mx-auto max-w-7xl px-4">
@@ -58,7 +58,7 @@ export default function Projects() {
           <h2 className="text-4xl font-bold md:text-5xl lg:text-6xl">
             Featured <span className="text-muted-foreground">Projects</span>
           </h2>
-          <p className="mt-4 text-muted-foreground md:text-lg">
+          <p className="text-muted-foreground mt-4 md:text-lg">
             A showcase of my technical explorations and creative solutions.
           </p>
         </motion.div>
@@ -75,11 +75,11 @@ export default function Projects() {
               key={project.name}
               variants={item}
               layoutId={`card-${project.name}`}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-card/50 backdrop-blur-xs transition-all hover:border-orange-500/30 hover:shadow-2xl hover:shadow-orange-500/10"
+              className="group bg-card/50 relative flex flex-col overflow-hidden rounded-2xl border border-white/10 backdrop-blur-xs transition-all hover:border-orange-500/30 hover:shadow-2xl hover:shadow-orange-500/10"
             >
               {/* Image Container */}
               <div
-                className="relative aspect-video w-full cursor-pointer overflow-hidden bg-muted"
+                className="bg-muted relative aspect-video w-full cursor-pointer overflow-hidden"
                 onClick={() => setSelectedProject(project)}
               >
                 {project.image ? (
@@ -92,14 +92,14 @@ export default function Projects() {
                   />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-gray-900 to-gray-800">
-                    <Code2 className="h-12 w-12 text-muted-foreground/20" />
+                    <Code2 className="text-muted-foreground/20 h-12 w-12" />
                   </div>
                 )}
                 <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/20" />
 
                 {/* Floating Action Button on Hover */}
-                <div className="absolute right-4 top-4 flex translate-y-[-10px] gap-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-background/90 text-foreground shadow-lg backdrop-blur-md">
+                <div className="absolute top-4 right-4 flex translate-y-[-10px] gap-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                  <div className="bg-background/90 text-foreground flex h-10 w-10 items-center justify-center rounded-full shadow-lg backdrop-blur-md">
                     <ArrowUpRight className="h-5 w-5" />
                   </div>
                 </div>
@@ -109,7 +109,7 @@ export default function Projects() {
               <div className="flex flex-1 flex-col p-5">
                 <div className="mb-3 flex items-start justify-between gap-2">
                   <div>
-                    <h3 className="text-lg font-bold tracking-tight text-foreground">
+                    <h3 className="text-foreground text-lg font-bold tracking-tight">
                       {project.name}
                     </h3>
                     {project.subsection && (
@@ -120,7 +120,7 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <p className="mb-6 line-clamp-2 text-sm text-muted-foreground/90">
+                <p className="text-muted-foreground/90 mb-6 line-clamp-2 text-sm">
                   {project.description}
                 </p>
 
@@ -130,7 +130,7 @@ export default function Projects() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-xs font-medium text-muted-foreground transition-colors hover:text-orange-500"
+                      className="text-muted-foreground inline-flex items-center gap-2 text-xs font-medium transition-colors hover:text-orange-500"
                     >
                       <Github className="h-4 w-4" />
                       <span>Source</span>
@@ -141,7 +141,7 @@ export default function Projects() {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-xs font-medium text-muted-foreground transition-colors hover:text-orange-500"
+                      className="text-muted-foreground inline-flex items-center gap-2 text-xs font-medium transition-colors hover:text-orange-500"
                     >
                       <ExternalLink className="h-4 w-4" />
                       <span>Live Demo</span>
@@ -164,18 +164,18 @@ export default function Projects() {
             >
               <motion.div
                 layoutId={`card-${selectedProject.name}`}
-                className="relative flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-3xl bg-card shadow-2xl ring-1 ring-white/10"
+                className="bg-card relative flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-3xl shadow-2xl ring-1 ring-white/10"
                 onClick={(e) => e.stopPropagation()}
               >
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md transition-transform hover:scale-110"
+                  className="absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md transition-transform hover:scale-110"
                 >
                   <X className="h-5 w-5" />
                 </button>
 
                 {selectedProject.image && (
-                  <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-muted">
+                  <div className="bg-muted relative aspect-video w-full shrink-0 overflow-hidden">
                     <Image
                       src={selectedProject.image}
                       alt={selectedProject.name}
@@ -196,7 +196,7 @@ export default function Projects() {
                     )}
                   </div>
 
-                  <p className="mb-8 text-base leading-relaxed text-muted-foreground">
+                  <p className="text-muted-foreground mb-8 text-base leading-relaxed">
                     {selectedProject.description}
                   </p>
 
@@ -216,7 +216,7 @@ export default function Projects() {
                         href={selectedProject.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-input bg-background px-8 text-sm font-medium shadow-xs transition-all hover:bg-accent hover:text-accent-foreground"
+                        className="border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-11 items-center justify-center gap-2 rounded-full border px-8 text-sm font-medium shadow-xs transition-all"
                       >
                         <Github className="h-4 w-4" />
                         View Source
