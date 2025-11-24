@@ -60,7 +60,7 @@ export default function Navbar({
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="font-great-vibes bg-gradient-to-tr from-amber-500 to-rose-600 bg-clip-text pb-2 pr-1 text-3xl leading-tight text-transparent">
+            <span className="font-great-vibes bg-linear-to-tr from-amber-500 to-rose-600 bg-clip-text pb-2 pr-1 text-3xl leading-tight text-transparent">
               K
             </span>
           </motion.button>
@@ -81,7 +81,7 @@ export default function Navbar({
                     {activeSection === item.id && (
                       <motion.div
                         layoutId="activeSection"
-                        className="absolute inset-0 -z-10 rounded-full bg-white/10 shadow-sm backdrop-blur-md"
+                        className="absolute inset-0 -z-10 rounded-full bg-white/10 shadow-xs backdrop-blur-md"
                         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                       />
                     )}

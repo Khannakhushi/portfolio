@@ -36,7 +36,7 @@ function Hero() {
       onMouseMove={handleMouseMove}
     >
       {/* Dynamic Background Grid */}
-      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
 
       {/* Spotlight Effect */}
       <motion.div
@@ -90,7 +90,7 @@ function Hero() {
             </Link>
 
             <a href="#contact">
-              <div className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-gradient-to-tr from-amber-500 to-rose-600 p-0.5 font-medium text-white shadow-lg transition-all hover:shadow-xl">
+              <div className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-linear-to-tr from-amber-500 to-rose-600 p-0.5 font-medium text-white shadow-lg transition-all hover:shadow-xl">
                 <span className="relative flex h-full w-full items-center justify-center rounded-full bg-background px-8 py-3 text-lg font-medium text-foreground transition-all duration-300 group-hover:bg-transparent group-hover:text-white">
                   Contact Me
                 </span>
@@ -114,8 +114,8 @@ function Hero() {
               className="absolute -inset-12 rounded-full border border-dashed border-rose-500/20 opacity-30"
             />
 
-            <div className="group relative h-full w-full overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-white/0 p-2 backdrop-blur-xl transition-transform duration-500 hover:-translate-y-2 hover:rotate-1">
-              <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/10 via-transparent to-rose-500/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            <div className="group relative h-full w-full overflow-hidden rounded-2xl border border-white/10 bg-linear-to-b from-white/5 to-white/0 p-2 backdrop-blur-xl transition-transform duration-500 hover:-translate-y-2 hover:rotate-1">
+              <div className="absolute inset-0 bg-linear-to-tr from-orange-500/10 via-transparent to-rose-500/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               <div className="relative h-full w-full overflow-hidden rounded-xl bg-zinc-900">
                 <Image
                   src="/me.jpeg"
@@ -124,7 +124,7 @@ function Hero() {
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-60" />
 
                 <div className="absolute bottom-0 left-0 w-full p-6">
                   <div className="flex items-center gap-2">
@@ -152,7 +152,7 @@ function Hero() {
           <span className="text-[10px] uppercase tracking-widest text-muted-foreground">
             Scroll
           </span>
-          <div className="h-10 w-[1px] bg-gradient-to-b from-transparent via-orange-500 to-transparent" />
+          <div className="h-10 w-px bg-linear-to-b from-transparent via-orange-500 to-transparent" />
         </div>
       </motion.div>
     </section>

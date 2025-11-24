@@ -75,7 +75,7 @@ export default function Projects() {
               key={project.name}
               variants={item}
               layoutId={`card-${project.name}`}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-card/50 backdrop-blur-sm transition-all hover:border-orange-500/30 hover:shadow-2xl hover:shadow-orange-500/10"
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-card/50 backdrop-blur-xs transition-all hover:border-orange-500/30 hover:shadow-2xl hover:shadow-orange-500/10"
             >
               {/* Image Container */}
               <div
@@ -91,7 +91,7 @@ export default function Projects() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 ) : (
-                  <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800">
+                  <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-gray-900 to-gray-800">
                     <Code2 className="h-12 w-12 text-muted-foreground/20" />
                   </div>
                 )}
@@ -159,7 +159,7 @@ export default function Projects() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-xs"
               onClick={() => setSelectedProject(null)}
             >
               <motion.div
@@ -216,7 +216,7 @@ export default function Projects() {
                         href={selectedProject.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-input bg-background px-8 text-sm font-medium shadow-sm transition-all hover:bg-accent hover:text-accent-foreground"
+                        className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-input bg-background px-8 text-sm font-medium shadow-xs transition-all hover:bg-accent hover:text-accent-foreground"
                       >
                         <Github className="h-4 w-4" />
                         View Source

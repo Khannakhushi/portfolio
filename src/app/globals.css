@@ -1,6 +1,57 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@config '../../tailwind.config.ts';
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility tabs-list-boundary {
+  border: 2px solid hsl(var(--background));
+  border-radius: var(--radius);
+  padding: 0.5rem;
+  background-color: hsla(var(--background), 0);
+}
+
+@utility tabs-list-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background-color: hsl(var(--background));
+}
+
+@utility tab-trigger {
+  flex: 1;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  transition: background-color 0.3s ease;
+
+  &[data-state='active'] {
+    background-color: hsl(var(--card));
+  }
+}
+
+@utility tab-content-container {
+  margin-top: 0.5rem;
+  background-color: hsl(var(--card));
+  border-radius: var(--radius);
+  padding: 1rem;
+}
 
 @layer base {
   :root {
@@ -68,41 +119,6 @@
     --bg-gradient-to: 0 0% 9%;
     --text-color: 0 0% 98%;
     --header-bg: 0 0% 7%;
-  }
-}
-
-@layer components {
-  .tabs-list-boundary {
-    border: 2px solid hsl(var(--background));
-    border-radius: var(--radius);
-    padding: 0.5rem;
-    background-color: hsla(var(--background), 0);
-  }
-
-  .tabs-list-container {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    background-color: hsl(var(--background));
-  }
-
-  .tab-trigger {
-    flex: 1;
-    text-align: center;
-    padding: 0.5rem;
-    border-radius: var(--radius);
-    transition: background-color 0.3s ease;
-  }
-
-  .tab-trigger[data-state='active'] {
-    background-color: hsl(var(--card));
-  }
-
-  .tab-content-container {
-    margin-top: 0.5rem;
-    background-color: hsl(var(--card));
-    border-radius: var(--radius);
-    padding: 1rem;
   }
 }
 

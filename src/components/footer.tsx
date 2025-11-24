@@ -30,7 +30,7 @@ export default function Footer() {
 
   return (
     <footer id="contact" className="relative overflow-hidden py-24 text-center">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-rose-500/10 via-transparent to-transparent" />
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-rose-500/10 via-transparent to-transparent" />
       
       <div className="container mx-auto px-4">
         <motion.div

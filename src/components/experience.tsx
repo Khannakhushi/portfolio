@@ -81,10 +81,10 @@ export default function Experience() {
 
         <div ref={containerRef} className="relative">
           {/* Minimal Line */}
-          <div className="absolute left-[27px] top-0 h-full w-[1px] bg-border/50 md:left-1/2 md:-ml-[0.5px]">
+          <div className="absolute left-[27px] top-0 h-full w-px bg-border/50 md:left-1/2 md:-ml-[0.5px]">
             <motion.div 
               style={{ height }} 
-              className="w-full bg-gradient-to-b from-amber-500 via-orange-500 to-rose-500"
+              className="w-full bg-linear-to-b from-amber-500 via-orange-500 to-rose-500"
             />
           </div>
 
@@ -97,7 +97,7 @@ export default function Experience() {
                   className={`relative flex flex-col md:flex-row ${isEven ? 'md:flex-row-reverse' : ''} items-start gap-8 md:gap-0`}
                 >
                   {/* Timeline Node */}
-                  <div className="absolute left-[13px] top-0 z-10 flex h-[29px] w-[29px] items-center justify-center rounded-full border-[6px] border-background bg-gradient-to-br from-amber-500 to-rose-500 shadow-sm md:left-1/2 md:-translate-x-1/2">
+                  <div className="absolute left-[13px] top-0 z-10 flex h-[29px] w-[29px] items-center justify-center rounded-full border-[6px] border-background bg-linear-to-br from-amber-500 to-rose-500 shadow-xs md:left-1/2 md:-translate-x-1/2">
                     <div className="h-1.5 w-1.5 rounded-full bg-white" />
                   </div>
 
@@ -111,7 +111,7 @@ export default function Experience() {
                       className="group relative"
                     >
                       {/* Minimal Card Design */}
-                      <div className="relative rounded-3xl border border-border/40 bg-card/30 p-8 backdrop-blur-sm transition-all duration-500 hover:border-orange-500/20 hover:bg-card/50 hover:shadow-lg hover:shadow-orange-500/5">
+                      <div className="relative rounded-3xl border border-border/40 bg-card/30 p-8 backdrop-blur-xs transition-all duration-500 hover:border-orange-500/20 hover:bg-card/50 hover:shadow-lg hover:shadow-orange-500/5">
                         <div className={`mb-6 flex flex-col gap-1.5 ${!isEven ? 'md:items-end' : 'items-start'}`}>
                           <h3 className="text-2xl font-bold text-foreground">{exp.title}</h3>
                           <span className="text-lg font-medium text-orange-500">{exp.company}</span>
