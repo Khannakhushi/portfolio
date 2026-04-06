@@ -1,22 +1,22 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React from 'react';
 import { experiences } from '@/data';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Briefcase, Calendar } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const techKeywords = [
   'Python', 'FastAPI', 'React', 'React.js', 'Amazon Q', 'LLM', 'MCP',
   'Kafka', 'AWS', 'JUnit', 'Cucumber', 'Spring Boot', 'AngularJS',
   'CI/CD', 'GitLab', 'Next.js', 'Tailwind CSS', 'TailwindCSS', 'SQLite',
   'Figma', 'EBS', 'EC2', 'JavaScript', 'TypeScript', 'Node.js',
-  'Java', 'C++', 'Swift', 'Docker', 'Git', 'Framer Motion'
+  'Java', 'C++', 'Swift', 'Docker', 'Git', 'Framer Motion', '.NET Core', 'C#',
+  'Microsoft SQL Server',
 ];
 
 const highlightTech = (text: string) => {
   const matches: Array<{ keyword: string; index: number; length: number }> = [];
-  
-  techKeywords.forEach(keyword => {
+
+  techKeywords.forEach((keyword) => {
     const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regex = new RegExp(`\\b${escapedKeyword}\\b`, 'gi');
     let match;
@@ -31,11 +31,11 @@ const highlightTech = (text: string) => {
   });
 
   const uniqueMatches: Array<{ keyword: string; index: number; length: number }> = [];
-  matches.forEach(match => {
+  matches.forEach((match) => {
     const overlaps = uniqueMatches.some(
-      existing => 
+      (existing) =>
         (match.index >= existing.index && match.index < existing.index + existing.length) ||
-        (match.index + match.length > existing.index && match.index < existing.index)
+        (match.index + match.length > existing.index && match.index < existing.index),
     );
     if (!overlaps) {
       uniqueMatches.push(match);
@@ -46,98 +46,76 @@ const highlightTech = (text: string) => {
 
   let result = text;
   uniqueMatches.forEach((match) => {
-    const replacement = `<span class="font-semibold text-orange-500/90">${match.keyword}</span>`;
-    result = result.substring(0, match.index) + replacement + result.substring(match.index + match.length);
+    const replacement = `<span style="color: hsl(var(--warm))">${match.keyword}</span>`;
+    result =
+      result.substring(0, match.index) + replacement + result.substring(match.index + match.length);
   });
 
   return result;
 };
 
 export default function Experience() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const height = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-
   return (
-    <section id="experience" className="relative py-24 overflow-hidden">
-      <div className="container mx-auto max-w-6xl px-4">
+    <section id="experience" className="relative py-20">
+      <div className="container mx-auto max-w-5xl px-5 sm:px-6">
+        {/* Section header */}
         <motion.div
-          className="mb-24 flex flex-col items-center justify-center text-center"
+          className="mb-12 sm:mb-20 flex items-end justify-between border-b border-border pb-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="mb-3 rounded-full bg-orange-500/10 px-3 py-1 text-sm font-medium text-orange-500">
-            Career Journey
-          </span>
-          <h2 className="text-4xl font-bold md:text-5xl lg:text-6xl">
-            Professional <span className="text-muted-foreground">Experience</span>
-          </h2>
+          <div>
+            <span className="section-number text-lg" style={{ fontFamily: 'var(--font-serif)' }}>
+              01
+            </span>
+            <h2 className="mt-2 text-3xl font-light tracking-tight sm:text-4xl md:text-5xl">
+              Experience
+            </h2>
+          </div>
+          <p className="hidden text-sm text-muted-foreground md:block">
+            Where I&apos;ve been building
+          </p>
         </motion.div>
 
-        <div ref={containerRef} className="relative">
-          {/* Minimal Line */}
-          <div className="absolute left-[27px] top-0 h-full w-px bg-border/50 md:left-1/2 md:-ml-[0.5px]">
-            <motion.div 
-              style={{ height }} 
-              className="w-full bg-linear-to-b from-amber-500 via-orange-500 to-rose-500"
-            />
-          </div>
-
-          <div className="flex flex-col gap-16 md:gap-24">
-            {experiences.map((exp, index) => {
-              const isEven = index % 2 === 0;
-              return (
-                <div 
-                  key={index} 
-                  className={`relative flex flex-col md:flex-row ${isEven ? 'md:flex-row-reverse' : ''} items-start gap-8 md:gap-0`}
-                >
-                  {/* Timeline Node */}
-                  <div className="absolute left-[13px] top-0 z-10 flex h-[29px] w-[29px] items-center justify-center rounded-full border-[6px] border-background bg-linear-to-br from-amber-500 to-rose-500 shadow-xs md:left-1/2 md:-translate-x-1/2">
-                    <div className="h-1.5 w-1.5 rounded-full bg-white" />
-                  </div>
-
-                  {/* Content Card */}
-                  <div className={`w-full md:w-[calc(50%-40px)] pl-16 md:pl-0 ${!isEven ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-100px" }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="group relative"
-                    >
-                      {/* Minimal Card Design */}
-                      <div className="relative rounded-3xl border border-border/40 bg-card/30 p-8 backdrop-blur-xs transition-all duration-500 hover:border-orange-500/20 hover:bg-card/50 hover:shadow-lg hover:shadow-orange-500/5">
-                        <div className={`mb-6 flex flex-col gap-1.5 ${!isEven ? 'md:items-end' : 'items-start'}`}>
-                          <h3 className="text-2xl font-bold text-foreground">{exp.title}</h3>
-                          <span className="text-lg font-medium text-orange-500">{exp.company}</span>
-                          <div className="mt-2 inline-flex items-center gap-2 rounded-full bg-secondary/30 px-3 py-1 text-xs font-medium text-muted-foreground">
-                            <Calendar className="h-3 w-3" />
-                            {exp.period}
-                          </div>
-                        </div>
-
-                        <div 
-                          className="text-base leading-relaxed text-muted-foreground/80 text-left"
-                          dangerouslySetInnerHTML={{ __html: highlightTech(exp.description) }}
-                        />
-                        
-                        {/* Decorative Corner Gradient */}
-                        <div className="absolute -right-12 -top-12 h-24 w-24 rounded-full bg-orange-500/5 blur-2xl transition-all duration-500 group-hover:bg-orange-500/10" />
-                      </div>
-                    </motion.div>
-                  </div>
-                  
-                  {/* Empty Space */}
-                  <div className="hidden w-[calc(50%-40px)] md:block" />
+        {/* Experience list */}
+        <div className="flex flex-col">
+          {experiences.map((exp, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              className="group"
+            >
+              <div className="grid gap-2 sm:gap-4 border-b border-border/60 py-7 sm:py-10 transition-all duration-500 md:grid-cols-[200px_1fr] md:gap-12 lg:grid-cols-[240px_1fr]">
+                {/* Left column - meta */}
+                <div className="flex flex-col gap-1">
+                  <span className="text-xs font-medium tracking-wider uppercase text-muted-foreground">
+                    {exp.period}
+                  </span>
+                  <span
+                    className="text-sm font-medium transition-colors duration-300"
+                    style={{ color: 'hsl(var(--warm))' }}
+                  >
+                    {exp.company}
+                  </span>
                 </div>
-              );
-            })}
-          </div>
+
+                {/* Right column - content */}
+                <div>
+                  <h3 className="mb-2 sm:mb-3 text-lg font-medium text-foreground sm:text-xl md:text-2xl">
+                    {exp.title}
+                  </h3>
+                  <div
+                    className="text-sm leading-relaxed text-muted-foreground md:text-base"
+                    dangerouslySetInnerHTML={{ __html: highlightTech(exp.description) }}
+                  />
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

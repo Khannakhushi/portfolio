@@ -1,15 +1,15 @@
 export const experiences = [
   {
-    title: 'Teaching Assistant',
-    company: 'Univ of Houston - CS Department',
-    period: 'Jan 2024 - Present',
+    title: 'Software Engineer I',
+    company: 'JPMorgan Chase & Co.',
+    period: 'Feb 2026 - Present',
     description:
-      'Conduct weekly labs for over 100+ students, assisting with coding assignments in Data Structures. Hold 3 Hours of office hours per week to provide one-on-one guidance on academic and technical challenges, fostering student success and comprehension.',
+      'Building scalable financial technology solutions at one of the world\'s leading financial institutions. Developing high-performance React and Java-based applications serving millions of users, contributing to modernization initiatives across the consumer banking platform.',
   },
   {
     title: 'Software Development Engineer Intern',
     company: 'Amazon',
-    period: 'Sept 2025 - Present',
+    period: 'Sept 2025 - Dec 2025',
     description:
       'Streamlined the Same Day Delivery zipcode automation process, reducing manual effort from 2-4 hours to under 10 minutes. Built 2 custom MCP servers and a Python FastAPI backend to automate the addition of modifications and memoization for delivery boundaries, integrating the workflow seamlessly with the Amazon Q CLI.',
   },
@@ -33,39 +33,6 @@ export const experiences = [
     period: 'May 2023 - Aug 2023',
     description:
       'Led a team of five interns to develop a cloud-based dining discovery app using React and SQLite. Designed scalable IaaS solutions on AWS (EBS and EC2) and created an intuitive UI/UX with Figma, enhancing user engagement and app performance.',
-  },
-];
-
-export const leadership = [
-  {
-    title: 'Marketing Committee',
-    project: 'Cougar AI',
-    period: 'Jan 2025 - Present',
-    description: `Contributing to the growth and visibility of the Cougar AI organization through strategic marketing initiatives. Developing promotional materials, managing social media content, and coordinating outreach events to expand the org\'s presence on campus.`,
-    image: '/cai.png',
-  },
-  {
-    title: 'SWE Mentor',
-    project: 'Society of Women Engineers',
-    period: 'Aug 2024 - Present',
-    description:
-      'Mentored students on technical and career skills, including building strong resumes, preparing for technical interviews, and navigating internship applications. Conducted mock interviews and coding sessions to build confidence and technical proficiency.',
-    image: 'https://upload.wikimedia.org/wikipedia/en/0/0e/Society_of_Women_Engineers_logo.svg',
-  },
-  {
-    title: 'Vice President External',
-    project: 'Code[Coogs]',
-    period: 'May 2024 - Aug 2024',
-    description: `Secured 2 corporate sponsorships and established partnerships with 4+ organizations. Directed external affairs, including organizing events and leading marketing efforts. Oversaw a historian\'s responsibilities and managed activities and marketing committees.`,
-    image: '/cc.png',
-  },
-  {
-    title: 'Peer Mentor',
-    project: 'NSM Student Leadership',
-    period: 'Dec 2022 - Jan 2024',
-    description:
-      'Guided students on navigating class schedules, selecting courses, and managing workloads effectively. Provided resume reviews, career guidance, and resources for technical interview preparation, covering data structures, algorithms, and problem-solving strategies.',
-    image: '/nsm.jpg',
   },
 ];
 
@@ -94,7 +61,7 @@ export const projects = [
     name: 'Syntora',
     subsection: 'AI-Powered Visual Creation Studio',
     description:
-      'Developed a premium AI-powered studio that transforms ideas into stunning visuals with cutting-edge image generation and prompt crafting. Syntora empowers designers, marketers, and developers to create and integrate high-quality AI imagery with ease.',
+      'Developed a premium AI-powered studio that transforms ideas into stunning visuals with cutting-edge image generation and prompt crafting. Empowers designers, marketers, and developers to create and integrate high-quality AI imagery with ease.',
     image: '/syntora.png',
     github: 'https://github.com/geeth24/syntora',
     link: 'https://syntora.app/',
@@ -112,7 +79,7 @@ export const projects = [
     name: 'DevMatch',
     subsection: 'Developer Tools Discovery',
     description:
-      'Created a personalized platform to help developers discover the perfect set of development tools based on their specific needs, preferences, and workflow. Built with React, Node.js, and a recommendation algorithm to match users with optimal toolsets.',
+      'Created a personalized platform to help developers discover the perfect set of development tools based on their specific needs, preferences, and workflow. Built with React, Node.js, and a recommendation algorithm.',
     image: '/devmatch.png',
     github: 'https://github.com/khannakhushi/devmatch',
     link: 'https://devmatch-web.vercel.app/',
@@ -121,16 +88,16 @@ export const projects = [
     name: 'Tonaire',
     subsection: 'AI Tone Stylist',
     description:
-      'Built an AI-powered tone stylist that rephrases sentences and generates stylish content for LinkedIn, Instagram, and other social platforms. Supports multiple tones—professional, casual, funny, emotional—and features elegant UI, dark/light themes, and smooth animations.',
+      'Built an AI-powered tone stylist that rephrases sentences and generates stylish content for LinkedIn, Instagram, and other social platforms. Supports multiple tones and features elegant UI with smooth animations.',
     image: '/tonaire.png',
     github: 'https://github.com/Khannakhushi/tonaire',
     link: 'https://tonaire.khyaatikhanna.com/',
   },
   {
-    name: 'AbideAI - Code For Good',
-    subsection: 'JP Morgan Chase - Social Imapct',
+    name: 'AbideAI',
+    subsection: 'JPMorgan Chase - Code For Good',
     description:
-      'Developed a dashboard for community interaction with a patient profile interface and key metrics. Built using Next.js, Tailwind CSS, AWS, Microsoft SQL Server, .NET Core, and C#',
+      'Developed a dashboard for community interaction with a patient profile interface and key metrics. Built using Next.js, Tailwind CSS, AWS, Microsoft SQL Server, .NET Core, and C#.',
     image: '/cfg.jpeg',
     imagePosition: 'object-top',
     github:

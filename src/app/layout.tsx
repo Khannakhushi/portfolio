@@ -1,26 +1,25 @@
 import type { Metadata } from 'next';
-import { Montserrat, Great_Vibes } from 'next/font/google';
+import { Inter, Instrument_Serif } from 'next/font/google';
 import './globals.css';
 import { Analytics } from '@vercel/analytics/react';
 
-const m = Montserrat({ subsets: ['latin'], variable: '--font-montserrat' });
-const greatVibes = Great_Vibes({
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
+const instrumentSerif = Instrument_Serif({
   weight: '400',
+  style: ['normal', 'italic'],
   subsets: ['latin'],
-  variable: '--font-great-vibes',
+  variable: '--font-serif',
 });
 
 export const metadata: Metadata = {
-  title: 'Khyaati Khanna | Software Engineer & CS Student',
-  description: `Hello! I'm Khyaati Khanna, a passionate software engineer and a junior at the University of Houston,
-                    pursuing a major in Computer Science with minors in Business Administration and
-                    Mathematics. Set to graduate in December 2025, I'm on a journey to become a
-                    versatile full-stack developer.`,
+  title: 'Khyaati Khanna | Software Engineer',
+  description:
+    'Software Engineer at JPMorgan Chase & Co. Previously Amazon, USAA. Building scalable systems and elegant interfaces.',
   keywords: [
     'Software Engineer',
     'Full Stack Developer',
-    'Computer Science',
-    'University of Houston',
+    'JPMorgan Chase',
+    'Amazon',
     'Web Development',
     'Portfolio',
     'Khyaati Khanna',
@@ -32,10 +31,10 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://khyaatikhanna.com',
-    siteName: 'Khyaati Khanna Portfolio',
-    title: 'Khyaati Khanna | Software Engineer & CS Student',
+    siteName: 'Khyaati Khanna',
+    title: 'Khyaati Khanna | Software Engineer',
     description:
-      'Software Engineer and Computer Science student at University of Houston specializing in full-stack development.',
+      'Software Engineer at JPMorgan Chase & Co. Previously Amazon, USAA. Building scalable systems and elegant interfaces.',
   },
 };
 
@@ -46,12 +45,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="overflow-x-hidden">
-      <body className={`${m.className} ${greatVibes.variable} overflow-x-hidden`}>
-        <div className="pointer-events-none fixed left-0 top-0 z-0 h-full w-full overflow-hidden">
-          <div className="absolute -left-[10%] -top-[20%] h-[700px] w-[700px] rounded-full bg-amber-500/20 blur-[100px]" />
-          <div className="absolute -right-[20%] top-[40%] h-[800px] w-[800px] rounded-full bg-rose-500/20 blur-[100px]" />
-          <div className="absolute -bottom-[20%] left-[20%] h-[600px] w-[600px] rounded-full bg-orange-500/20 blur-[80px]" />
+      <body
+        className={`${inter.className} ${instrumentSerif.variable} overflow-x-hidden`}
+      >
+        {/* Ambient gradient blobs */}
+        <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+          <div className="absolute -top-[30%] -left-[15%] h-[700px] w-[700px] rounded-full opacity-[0.025] blur-[120px]" style={{ backgroundColor: 'hsl(var(--warm))' }} />
+          <div className="absolute top-[40%] -right-[20%] h-[600px] w-[600px] rounded-full opacity-[0.02] blur-[100px]" style={{ backgroundColor: 'hsl(var(--warm))' }} />
+          <div className="absolute -bottom-[20%] left-[30%] h-[500px] w-[500px] rounded-full opacity-[0.015] blur-[100px]" style={{ backgroundColor: 'hsl(var(--warm))' }} />
         </div>
+        <div className="noise-overlay" />
         <div className="relative z-10">{children}</div>
         <Analytics />
       </body>
