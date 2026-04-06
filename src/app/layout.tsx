@@ -27,6 +27,9 @@ export const metadata: Metadata = {
   authors: [{ name: 'Khyaati Khanna' }],
   creator: 'Khyaati Khanna',
   publisher: 'Khyaati Khanna',
+  icons: {
+    icon: '/icon.svg',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -45,14 +48,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="overflow-x-hidden">
-      <body
-        className={`${inter.className} ${instrumentSerif.variable} overflow-x-hidden`}
-      >
+      <body className={`${inter.className} ${instrumentSerif.variable} overflow-x-hidden`}>
         {/* Ambient gradient blobs */}
         <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-          <div className="absolute -top-[30%] -left-[15%] h-[700px] w-[700px] rounded-full opacity-[0.025] blur-[120px]" style={{ backgroundColor: 'hsl(var(--warm))' }} />
-          <div className="absolute top-[40%] -right-[20%] h-[600px] w-[600px] rounded-full opacity-[0.02] blur-[100px]" style={{ backgroundColor: 'hsl(var(--warm))' }} />
-          <div className="absolute -bottom-[20%] left-[30%] h-[500px] w-[500px] rounded-full opacity-[0.015] blur-[100px]" style={{ backgroundColor: 'hsl(var(--warm))' }} />
+          <div
+            className="absolute -top-[30%] -left-[15%] h-[700px] w-[700px] rounded-full opacity-[0.025] blur-[120px]"
+            style={{ backgroundColor: 'hsl(var(--warm))' }}
+          />
+          <div
+            className="absolute top-[40%] -right-[20%] h-[600px] w-[600px] rounded-full opacity-[0.02] blur-[100px]"
+            style={{ backgroundColor: 'hsl(var(--warm))' }}
+          />
+          <div
+            className="absolute -bottom-[20%] left-[30%] h-[500px] w-[500px] rounded-full opacity-[0.015] blur-[100px]"
+            style={{ backgroundColor: 'hsl(var(--warm))' }}
+          />
         </div>
         <div className="noise-overlay" />
         <div className="relative z-10">{children}</div>

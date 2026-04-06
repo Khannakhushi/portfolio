@@ -17,7 +17,7 @@ export default function Footer() {
       <div className="container mx-auto max-w-5xl px-5 sm:px-6">
         {/* Section header */}
         <motion.div
-          className="mb-10 sm:mb-16 border-b border-border pb-6"
+          className="border-border mb-10 border-b pb-6 sm:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -37,7 +37,7 @@ export default function Footer() {
           className="grid gap-10 sm:gap-16 md:grid-cols-[1fr_auto]"
         >
           <div>
-            <p className="max-w-md text-lg leading-relaxed text-muted-foreground">
+            <p className="text-muted-foreground max-w-md text-lg leading-relaxed">
               I&apos;m always open to interesting conversations, collaboration opportunities, and
               new challenges. Let&apos;s build something great together.
             </p>
@@ -46,12 +46,12 @@ export default function Footer() {
               href="https://www.linkedin.com/in/khyaati-khanna/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group mt-8 inline-flex items-center gap-3 text-foreground transition-opacity hover:opacity-70"
+              className="group text-foreground mt-8 inline-flex items-center gap-3 transition-opacity hover:opacity-70"
             >
               <span className="text-2xl font-light" style={{ fontFamily: 'var(--font-serif)' }}>
                 Say hello
               </span>
-              <ArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              <ArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </div>
 
@@ -69,7 +69,7 @@ export default function Footer() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.08 }}
-                  className="group flex items-center gap-3 text-muted-foreground transition-colors hover:text-foreground"
+                  className="group text-muted-foreground hover:text-foreground flex items-center gap-3 transition-colors"
                 >
                   <Icon className="h-4 w-4" />
                   <span className="text-sm">{social.label}</span>
@@ -83,10 +83,11 @@ export default function Footer() {
         </motion.div>
 
         {/* Bottom bar */}
-        <div className="mt-16 sm:mt-32 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-xs text-muted-foreground md:flex-row">
+        <div className="border-border text-muted-foreground mt-16 flex flex-col items-center justify-between gap-4 border-t pt-8 text-xs sm:mt-32 md:flex-row">
           <p>&copy; {new Date().getFullYear()} Khyaati Khanna</p>
           <p className="flex items-center gap-1.5">
-            Built with love <Heart className="h-3.5 w-3.5 animate-pulse fill-red-500 text-red-500" />
+            Built with love{' '}
+            <Heart className="h-3.5 w-3.5 animate-pulse fill-red-500 text-red-500" />
           </p>
         </div>
       </div>

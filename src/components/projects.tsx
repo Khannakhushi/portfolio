@@ -24,7 +24,7 @@ export default function Projects() {
       <div className="container mx-auto max-w-5xl px-5 sm:px-6">
         {/* Section header */}
         <motion.div
-          className="mb-12 sm:mb-20 flex items-end justify-between border-b border-border pb-6"
+          className="border-border mb-12 flex items-end justify-between border-b pb-6 sm:mb-20"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -33,9 +33,11 @@ export default function Projects() {
             <span className="section-number text-lg" style={{ fontFamily: 'var(--font-serif)' }}>
               02
             </span>
-            <h2 className="mt-2 text-3xl font-light tracking-tight sm:text-4xl md:text-5xl">Projects</h2>
+            <h2 className="mt-2 text-3xl font-light tracking-tight sm:text-4xl md:text-5xl">
+              Projects
+            </h2>
           </div>
-          <p className="hidden text-sm text-muted-foreground md:block">
+          <p className="text-muted-foreground hidden text-sm md:block">
             What I&apos;ve been building
           </p>
         </motion.div>
@@ -56,21 +58,18 @@ export default function Projects() {
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.03 }}
               onClick={() => setSelectedProject(project)}
-              className="group flex cursor-pointer items-baseline justify-between gap-4 border-b border-border/40 py-5 transition-all duration-300 hover:border-border"
+              className="group border-border/40 hover:border-border flex cursor-pointer items-baseline justify-between gap-4 border-b py-5 transition-all duration-300"
             >
               <div className="min-w-0">
-                <h3 className="text-base font-medium text-foreground transition-all duration-300 group-hover:text-[hsl(var(--warm))]">
+                <h3 className="text-foreground text-base font-medium transition-all duration-300 group-hover:text-[hsl(var(--warm))]">
                   {project.name}
                 </h3>
-                <span
-                  className="text-xs"
-                  style={{ color: 'hsl(var(--warm))' }}
-                >
+                <span className="text-xs" style={{ color: 'hsl(var(--warm))' }}>
                   {project.subsection}
                 </span>
               </div>
 
-              <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground/20 transition-all duration-300 group-hover:text-foreground group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              <ArrowUpRight className="text-muted-foreground/20 group-hover:text-foreground h-3.5 w-3.5 shrink-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </motion.div>
           ))}
         </motion.div>
@@ -91,18 +90,18 @@ export default function Projects() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.96, y: 10 }}
                 transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="relative flex max-h-[90vh] sm:max-h-[85vh] w-full max-w-2xl flex-col overflow-hidden rounded-xl sm:rounded-2xl border border-border bg-background shadow-2xl"
+                className="border-border bg-background relative flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-xl border shadow-2xl sm:max-h-[85vh] sm:rounded-2xl"
                 onClick={(e) => e.stopPropagation()}
               >
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="absolute top-4 right-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-background/80 text-muted-foreground backdrop-blur-sm transition-colors hover:text-foreground"
+                  className="bg-background/80 text-muted-foreground hover:text-foreground absolute top-4 right-4 z-10 flex h-8 w-8 items-center justify-center rounded-full backdrop-blur-sm transition-colors"
                 >
                   <X className="h-4 w-4" />
                 </button>
 
                 {selectedProject.image && (
-                  <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-muted">
+                  <div className="bg-muted relative aspect-video w-full shrink-0 overflow-hidden">
                     <Image
                       src={selectedProject.image}
                       alt={selectedProject.name}
@@ -123,7 +122,7 @@ export default function Projects() {
                     )}
                   </div>
 
-                  <p className="mb-8 text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-muted-foreground mb-8 text-sm leading-relaxed">
                     {selectedProject.description}
                   </p>
 
@@ -133,7 +132,7 @@ export default function Projects() {
                         href={selectedProject.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90"
+                        className="bg-foreground text-background inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-medium transition-opacity hover:opacity-90"
                       >
                         Visit Website <ArrowUpRight className="h-3.5 w-3.5" />
                       </a>
@@ -143,7 +142,7 @@ export default function Projects() {
                         href={selectedProject.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-2.5 text-sm font-medium transition-colors hover:bg-accent"
+                        className="border-border hover:bg-accent inline-flex items-center gap-2 rounded-full border px-6 py-2.5 text-sm font-medium transition-colors"
                       >
                         <Github className="h-3.5 w-3.5" />
                         Source

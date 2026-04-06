@@ -96,7 +96,7 @@ export default function Page() {
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.2 }}
               onClick={scrollToTop}
-              className="fixed bottom-8 right-8 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card/80 shadow-lg backdrop-blur-sm transition-all hover:bg-card"
+              className="border-border bg-card/80 hover:bg-card fixed right-8 bottom-8 z-40 flex h-11 w-11 items-center justify-center rounded-full border shadow-lg backdrop-blur-sm transition-all"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.95 }}
               aria-label="Scroll to top"

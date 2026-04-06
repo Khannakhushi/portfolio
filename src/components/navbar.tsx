@@ -41,7 +41,7 @@ export default function Navbar({
   return (
     <>
       <motion.header
-        className="fixed left-0 right-0 top-0 z-50"
+        className="fixed top-0 right-0 left-0 z-50"
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -56,7 +56,7 @@ export default function Navbar({
           }}
         />
 
-        <div className="container relative mx-auto flex max-w-5xl items-center justify-between px-5 py-5 sm:px-6 sm:py-6">
+        <div className="relative container mx-auto flex max-w-5xl items-center justify-between px-5 py-5 sm:px-6 sm:py-6">
           {/* Logo */}
           <button
             onClick={scrollToTop}
@@ -95,11 +95,11 @@ export default function Navbar({
             ))}
 
             {/* Divider */}
-            <div className="h-4 w-px bg-border" />
+            <div className="bg-border h-4 w-px" />
 
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className="text-muted-foreground transition-colors hover:text-foreground"
+              className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Toggle theme"
             >
               <AnimatePresence mode="wait">
@@ -120,7 +120,7 @@ export default function Navbar({
           <div className="flex items-center gap-4 md:hidden">
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className="text-muted-foreground transition-colors hover:text-foreground"
+              className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Toggle theme"
             >
               <AnimatePresence mode="wait">
@@ -136,10 +136,7 @@ export default function Navbar({
               </AnimatePresence>
             </button>
 
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="text-muted-foreground"
-            >
+            <button onClick={() => setMenuOpen(!menuOpen)} className="text-muted-foreground">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={menuOpen ? 'close' : 'open'}
@@ -159,7 +156,7 @@ export default function Navbar({
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 flex flex-col items-start justify-center bg-background/98 px-8 backdrop-blur-2xl md:hidden"
+            className="bg-background/98 fixed inset-0 z-40 flex flex-col items-start justify-center px-8 backdrop-blur-2xl md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

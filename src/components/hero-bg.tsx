@@ -156,13 +156,19 @@ export default function HeroBg() {
       mouse.x = e.clientX - rect.left;
       mouse.y = e.clientY - rect.top;
     };
-    const onLeave = () => { mouse.x = -1000; mouse.y = -1000; };
+    const onLeave = () => {
+      mouse.x = -1000;
+      mouse.y = -1000;
+    };
 
     resize();
     init();
     draw();
 
-    const onResize = () => { resize(); init(); };
+    const onResize = () => {
+      resize();
+      init();
+    };
     window.addEventListener('resize', onResize);
     canvas.addEventListener('mousemove', onMouse);
     canvas.addEventListener('mouseleave', onLeave);
@@ -176,9 +182,6 @@ export default function HeroBg() {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="pointer-events-auto absolute inset-0 z-0 h-full w-full"
-    />
+    <canvas ref={canvasRef} className="pointer-events-auto absolute inset-0 z-0 h-full w-full" />
   );
 }

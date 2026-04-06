@@ -5,11 +5,39 @@ import { experiences } from '@/data';
 import { motion } from 'framer-motion';
 
 const techKeywords = [
-  'Python', 'FastAPI', 'React', 'React.js', 'Amazon Q', 'LLM', 'MCP',
-  'Kafka', 'AWS', 'JUnit', 'Cucumber', 'Spring Boot', 'AngularJS',
-  'CI/CD', 'GitLab', 'Next.js', 'Tailwind CSS', 'TailwindCSS', 'SQLite',
-  'Figma', 'EBS', 'EC2', 'JavaScript', 'TypeScript', 'Node.js',
-  'Java', 'C++', 'Swift', 'Docker', 'Git', 'Framer Motion', '.NET Core', 'C#',
+  'Python',
+  'FastAPI',
+  'React',
+  'React.js',
+  'Amazon Q',
+  'LLM',
+  'MCP',
+  'Kafka',
+  'AWS',
+  'JUnit',
+  'Cucumber',
+  'Spring Boot',
+  'AngularJS',
+  'CI/CD',
+  'GitLab',
+  'Next.js',
+  'Tailwind CSS',
+  'TailwindCSS',
+  'SQLite',
+  'Figma',
+  'EBS',
+  'EC2',
+  'JavaScript',
+  'TypeScript',
+  'Node.js',
+  'Java',
+  'C++',
+  'Swift',
+  'Docker',
+  'Git',
+  'Framer Motion',
+  '.NET Core',
+  'C#',
   'Microsoft SQL Server',
 ];
 
@@ -60,7 +88,7 @@ export default function Experience() {
       <div className="container mx-auto max-w-5xl px-5 sm:px-6">
         {/* Section header */}
         <motion.div
-          className="mb-12 sm:mb-20 flex items-end justify-between border-b border-border pb-6"
+          className="border-border mb-12 flex items-end justify-between border-b pb-6 sm:mb-20"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -73,7 +101,7 @@ export default function Experience() {
               Experience
             </h2>
           </div>
-          <p className="hidden text-sm text-muted-foreground md:block">
+          <p className="text-muted-foreground hidden text-sm md:block">
             Where I&apos;ve been building
           </p>
         </motion.div>
@@ -89,10 +117,10 @@ export default function Experience() {
               transition={{ duration: 0.5, delay: index * 0.08 }}
               className="group"
             >
-              <div className="grid gap-2 sm:gap-4 border-b border-border/60 py-7 sm:py-10 transition-all duration-500 md:grid-cols-[200px_1fr] md:gap-12 lg:grid-cols-[240px_1fr]">
+              <div className="border-border/60 grid gap-2 border-b py-7 transition-all duration-500 sm:gap-4 sm:py-10 md:grid-cols-[200px_1fr] md:gap-12 lg:grid-cols-[240px_1fr]">
                 {/* Left column - meta */}
                 <div className="flex flex-col gap-1">
-                  <span className="text-xs font-medium tracking-wider uppercase text-muted-foreground">
+                  <span className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
                     {exp.period}
                   </span>
                   <span
@@ -105,11 +133,11 @@ export default function Experience() {
 
                 {/* Right column - content */}
                 <div>
-                  <h3 className="mb-2 sm:mb-3 text-lg font-medium text-foreground sm:text-xl md:text-2xl">
+                  <h3 className="text-foreground mb-2 text-lg font-medium sm:mb-3 sm:text-xl md:text-2xl">
                     {exp.title}
                   </h3>
                   <div
-                    className="text-sm leading-relaxed text-muted-foreground md:text-base"
+                    className="text-muted-foreground text-sm leading-relaxed md:text-base"
                     dangerouslySetInnerHTML={{ __html: highlightTech(exp.description) }}
                   />
                 </div>

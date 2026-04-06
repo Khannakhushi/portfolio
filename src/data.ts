@@ -4,7 +4,7 @@ export const experiences = [
     company: 'JPMorgan Chase & Co.',
     period: 'Feb 2026 - Present',
     description:
-      'Building scalable financial technology solutions at one of the world\'s leading financial institutions. Developing high-performance React and Java-based applications serving millions of users, contributing to modernization initiatives across the consumer banking platform.',
+      "Building scalable financial technology solutions at one of the world's leading financial institutions. Developing high-performance React and Java-based applications serving millions of users, contributing to modernization initiatives across the consumer banking platform.",
   },
   {
     title: 'Software Development Engineer Intern',
