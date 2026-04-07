@@ -7,18 +7,25 @@ export const experiences = [
       "Building scalable financial technology solutions at one of the world's leading financial institutions. Developing high-performance React and Java-based applications serving millions of users, contributing to modernization initiatives across the consumer banking platform.",
   },
   {
+    title: 'Teaching Assistant',
+    company: 'University of Houston - CS Department',
+    period: 'Jan 2024 - Dec 2025',
+    description:
+      'Managed grading process optimization for Data Structures & Algorithms by enhancing Bash automation scripts. Headed weekly interactive lab sessions for 100+ students, guiding them through applied coding exercises on recursion, trees, graphs, and algorithm analysis. Dedicated 3 hours weekly to office hours, providing individualized support that helped students debug complex data structure implementations and reduced regrade requests throughout the semester.',
+  },
+  {
     title: 'Software Development Engineer Intern',
     company: 'Amazon',
     period: 'Sept 2025 - Nov 2025',
     description:
-      'Streamlined the Same Day Delivery zipcode automation process, reducing manual effort from 2-4 hours to under 10 minutes. Built 2 custom MCP servers and a Python FastAPI backend to automate the addition of modifications and memoization for delivery boundaries, integrating the workflow seamlessly with the Amazon Q CLI.',
+      'Automated change-management workflow by building a Python FastAPI backend and developing two custom MCP servers (orchestrator and validator), integrating four MCPs total and reducing MCM creation time from 2-3 hours to under 15 minutes. Developed one-click installation Bash scripts with automated prerequisite configuration, enabling Amazon Q CLI to generate and validate records across the Sub-Same Day Delivery team.',
   },
   {
     title: 'Software Engineer Intern',
     company: 'JPMorgan Chase & Co.',
     period: 'June 2025 - Aug 2025',
     description:
-      "Built a React.js UI dashboard proof of concept with JPMorgan's design system, modernizing legacy tools for ~30% faster navigation. Architected a Kafka-based task pipeline with AWS deployment, leading schema design, staging table setup, and DRB approvals. Delivered 90%+ test coverage using JUnit and Cucumber, ensuring reliable data handling across microservices.",
+      "Developed a full-stack dashboard POC using React.js and JPMorgan's enterprise design system (MDS), delivering a polished user experience aligned with internal UX standards. Modernized legacy internal tools to improve accessibility and responsiveness, reducing navigation time by ~30%. Architected and deployed a Kafka-based task event pipeline on AWS, leading schema design, staging table setup, DRB approvals, and implementing consumers/processors with 90%+ JUnit test coverage for reliable microservice data handling.",
   },
   {
     title: 'Software Engineer Intern',
@@ -26,13 +33,6 @@ export const experiences = [
     period: 'May 2024 - Aug 2024',
     description:
       "Led the migration of an application to Spring Boot, enhancing its performance and scalability. Improved a web application's UI with AngularJS and streamlined deployment using CI/CD GitLab Pipelines. Conducted unit tests, integration testing, and Q tests to ensure seamless functionality across modules.",
-  },
-  {
-    title: 'Application Development Intern',
-    company: 'Dandilyonn Seeds',
-    period: 'May 2023 - Aug 2023',
-    description:
-      'Led a team of five interns to develop a cloud-based dining discovery app using React and SQLite. Designed scalable IaaS solutions on AWS (EBS and EC2) and created an intuitive UI/UX with Figma, enhancing user engagement and app performance.',
   },
 ];
 
