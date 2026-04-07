@@ -14,7 +14,7 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   title: 'Khyaati Khanna | Software Engineer',
   description:
-    'Software Engineer at JPMorgan Chase & Co. Previously Amazon, USAA. Building scalable systems and elegant interfaces.',
+    '21 y/o software engineer at JPMorgan Chase & Co. Previously Amazon, USAA. I build things and figure stuff out as I go.',
   keywords: [
     'Software Engineer',
     'Full Stack Developer',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     siteName: 'Khyaati Khanna',
     title: 'Khyaati Khanna | Software Engineer',
     description:
-      'Software Engineer at JPMorgan Chase & Co. Previously Amazon, USAA. Building scalable systems and elegant interfaces.',
+      '21 y/o software engineer at JPMorgan Chase & Co. Previously Amazon, USAA. I build things and figure stuff out as I go.',
   },
 };
 

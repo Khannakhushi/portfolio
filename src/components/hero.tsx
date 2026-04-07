@@ -49,22 +49,29 @@ function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Software Engineer at JPMorgan Chase & Co. building scalable financial technology.
-              Previously at Amazon and USAA. Passionate about crafting systems that are as elegant
-              as they are robust.
+              21 y/o software engineer at JPMorgan Chase &amp; Co.
+              <br />
+              I build things and figure stuff out as I go.
+              <br />
+              <span className="text-xs sm:text-sm">
+                Previously at{' '}
+                <span className="font-medium" style={{ color: 'hsl(var(--warm))' }}>Amazon</span>
+                {' & '}
+                <span className="font-medium" style={{ color: 'hsl(var(--warm))' }}>USAA</span>
+              </span>
             </motion.p>
 
             <motion.div
-              className="mt-8 flex flex-wrap items-center gap-4 sm:mt-10 sm:gap-6"
+              className="mt-8 flex flex-wrap items-center gap-5 sm:mt-10"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
             >
               <Link
                 href="/Khanna_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group border-foreground bg-foreground text-background hover:text-foreground inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-medium transition-all duration-300 hover:bg-transparent sm:px-6 sm:py-3"
+                className="group inline-flex items-center gap-2 rounded-full border border-foreground px-5 py-2.5 text-sm font-medium text-foreground transition-all duration-300 hover:bg-foreground hover:text-background sm:px-6 sm:py-3"
               >
                 Resume
                 <Download className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-y-0.5" />
@@ -75,9 +82,7 @@ function Hero() {
                 className="group text-muted-foreground hover:text-foreground inline-flex items-center gap-2 text-sm font-medium transition-colors"
               >
                 Get in touch
-                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
-                  &rarr;
-                </span>
+                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
               </a>
             </motion.div>
           </div>

@@ -84,11 +84,11 @@ const highlightTech = (text: string) => {
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative py-20">
+    <section id="experience" className="relative py-12 sm:py-16">
       <div className="container mx-auto max-w-5xl px-5 sm:px-6">
         {/* Section header */}
         <motion.div
-          className="border-border mb-12 flex items-end justify-between border-b pb-6 sm:mb-20"
+          className="border-border mb-8 flex items-end justify-between border-b pb-6 sm:mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

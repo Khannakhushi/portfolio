@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, ArrowUpRight, Heart } from 'lucide-react';
 import MediumIcon from '@/components/medium-icon';
+import BobaIcon from '@/components/boba-icon';
 
 export default function Footer() {
   const socials = [
@@ -10,10 +11,11 @@ export default function Footer() {
     { href: 'https://github.com/Khannakhushi', icon: Github, label: 'GitHub' },
     { href: 'https://www.linkedin.com/in/khyaati-khanna/', icon: Linkedin, label: 'LinkedIn' },
     { href: 'https://medium.com/@khannakhushi93', icon: MediumIcon, label: 'Medium' },
+    { href: 'https://www.bobatalks.com/mentors', icon: BobaIcon, label: 'BobaTalks' },
   ];
 
   return (
-    <footer id="contact" className="relative py-20">
+    <footer id="contact" className="relative py-12 sm:py-16">
       <div className="container mx-auto max-w-5xl px-5 sm:px-6">
         {/* Section header */}
         <motion.div
@@ -40,6 +42,19 @@ export default function Footer() {
             <p className="text-muted-foreground max-w-md text-lg leading-relaxed">
               I&apos;m always open to interesting conversations, collaboration opportunities, and
               new challenges. Let&apos;s build something great together.
+            </p>
+            <p className="text-muted-foreground/60 mt-3 text-sm">
+              ps — you can also{' '}
+              <a
+                href="https://www.bobatalks.com/mentors"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-[hsl(var(--warm)/0.4)] underline-offset-2 transition-colors hover:text-foreground"
+                style={{ color: 'hsl(var(--warm))' }}
+              >
+                book a mentorship chat
+              </a>
+              {' '}with me on BobaTalks
             </p>
 
             <a
@@ -87,7 +102,7 @@ export default function Footer() {
           <p>&copy; {new Date().getFullYear()} Khyaati Khanna</p>
           <p className="flex items-center gap-1.5">
             Built with love{' '}
-            <Heart className="h-3.5 w-3.5 animate-pulse fill-red-500 text-red-500" />
+            <Heart className="h-3.5 w-3.5 animate-pulse fill-red-500 text-red-500 dark:fill-white dark:text-white" />
           </p>
         </div>
       </div>

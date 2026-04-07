@@ -9,7 +9,7 @@ export const experiences = [
   {
     title: 'Software Development Engineer Intern',
     company: 'Amazon',
-    period: 'Sept 2025 - Dec 2025',
+    period: 'Sept 2025 - Nov 2025',
     description:
       'Streamlined the Same Day Delivery zipcode automation process, reducing manual effort from 2-4 hours to under 10 minutes. Built 2 custom MCP servers and a Python FastAPI backend to automate the addition of modifications and memoization for delivery boundaries, integrating the workflow seamlessly with the Amazon Q CLI.',
   },

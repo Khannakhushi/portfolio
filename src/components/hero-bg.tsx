@@ -92,8 +92,8 @@ export default function HeroBg() {
         // Warm gold, visible on dark bg
         return { r: 196, g: 169, b: 130, boost: 1 };
       } else {
-        // Darker tone for light bg
-        return { r: 120, g: 100, b: 70, boost: 2.5 };
+        // Rich warm tone for light bg
+        return { r: 100, g: 75, b: 40, boost: 3 };
       }
     };
 
