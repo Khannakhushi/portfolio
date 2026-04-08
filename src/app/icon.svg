@@ -1,1 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="#6b5311"/><text x="32" y="32" text-anchor="middle" dy="0.35em" fill="#faf8f5" font-family="Georgia,serif" font-style="italic" font-size="38">K</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+    <linearGradient id="warm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4b896"/>
+      <stop offset="100%" stop-color="#8b6914"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <text x="256" y="54%" text-anchor="middle" dominant-baseline="central" fill="url(#warm)" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="320">K</text>
+  <rect x="1" y="1" width="510" height="510" rx="111" fill="none" stroke="#c4a47a" stroke-opacity="0.15" stroke-width="2"/>
+</svg>

@@ -47,16 +47,12 @@ export default function Projects() {
           className="grid grid-cols-1 gap-x-16 gap-y-0 sm:grid-cols-2"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          {projects.map((project, index) => (
-            <motion.div
+          {projects.map((project) => (
+            <div
               key={project.name}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.03 }}
               onClick={() => setSelectedProject(project)}
               className="group border-border/40 hover:border-border flex cursor-pointer items-baseline justify-between gap-4 border-b py-5 transition-all duration-300"
             >
@@ -70,7 +66,7 @@ export default function Projects() {
               </div>
 
               <ArrowUpRight className="text-muted-foreground/20 group-hover:text-foreground h-3.5 w-3.5 shrink-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </motion.div>
+            </div>
           ))}
         </motion.div>
 
