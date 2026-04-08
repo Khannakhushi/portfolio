@@ -20,8 +20,8 @@ export default function Footer() {
         {/* Section header */}
         <motion.div
           className="border-border mb-10 border-b pb-6 sm:mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
           <span className="section-number text-lg" style={{ fontFamily: 'var(--font-serif)' }}>
@@ -33,8 +33,8 @@ export default function Footer() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           className="grid gap-10 sm:gap-16 md:grid-cols-[1fr_auto]"
         >
@@ -80,8 +80,8 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  initial={{ opacity: 0, x: 10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.08 }}
                   className="group text-muted-foreground hover:text-foreground flex items-center gap-3 transition-colors"

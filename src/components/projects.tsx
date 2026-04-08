@@ -25,8 +25,8 @@ export default function Projects() {
         {/* Section header */}
         <motion.div
           className="border-border mb-8 flex items-end justify-between border-b pb-6 sm:mb-10"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
           <div>
