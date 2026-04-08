@@ -39,6 +39,10 @@ const techKeywords = [
   '.NET Core',
   'C#',
   'Microsoft SQL Server',
+  'MDS',
+  'Data Structures & Algorithms',
+  'Playwright',
+  'Bash',
 ];
 
 const highlightTech = (text: string) => {
