@@ -4,7 +4,7 @@ export const experiences = [
     company: 'JPMorgan Chase & Co.',
     period: 'Feb 2026 - Present',
     description:
-      "Part of the Card Benefits team on the chase.com platform, serving millions of users. Building and maintaining consumer-facing experiences with React and JPMorgan's Manhattan Design System (MDS), ensuring quality through end-to-end testing with Playwright.",
+      'Part of the Card Benefits team on Chase.com serving 60M+ users. Building React-based applications and internal tools that support benefit content management and testing operations, while contributing to platform improvements, automation, and new loyalty experiences.',
   },
   {
     title: 'Teaching Assistant',
